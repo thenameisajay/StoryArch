@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Implemented Job MODEL (extends Invoice which extends User).">
-      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Chapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/Job.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Job.java" afterDir="false" />
+    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Implemented Chapter MODEL (extends Job which extends User).">
+      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Story.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +54,7 @@
       <updated>1679317690667</updated>
       <workItem from="1679984694136" duration="609000" />
       <workItem from="1679998498636" duration="222000" />
-      <workItem from="1679998863014" duration="5513000" />
+      <workItem from="1679998863014" duration="8350000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a simple user menu for the view and updating the data model for the User.">
       <created>1679998692909</created>
@@ -91,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680010691500</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Implemented Chapter MODEL (extends Job which extends User).">
+      <created>1680011064596</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680011064596</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +121,7 @@
     <MESSAGE value="Implemented Invoice (extends User) and generated getter and setter." />
     <MESSAGE value="Implemented Subscription MODEL (extends Invoice)." />
     <MESSAGE value="Implemented Job MODEL (extends Invoice which extends User)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented Job MODEL (extends Invoice which extends User)." />
+    <MESSAGE value="Implemented Chapter MODEL (extends Job which extends User)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Chapter MODEL (extends Job which extends User)." />
   </component>
 </project>
