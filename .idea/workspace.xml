@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Adding API and Invoice model for the application.">
+    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Implemented Subscription MODEL (extends Invoice).">
+      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Job.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/Invoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Invoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +24,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2NHOlKivoCRIctXSrW70jXPqqTK" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -53,7 +54,7 @@
       <updated>1679317690667</updated>
       <workItem from="1679984694136" duration="609000" />
       <workItem from="1679998498636" duration="222000" />
-      <workItem from="1679998863014" duration="4468000" />
+      <workItem from="1679998863014" duration="5183000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a simple user menu for the view and updating the data model for the User.">
       <created>1679998692909</created>
@@ -69,7 +70,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680009513328</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Implemented Invoice (extends User) and generated getter and setter.">
+      <created>1680010004957</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1680010004957</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Implemented Subscription MODEL (extends Invoice).">
+      <created>1680010318655</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680010318655</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,6 +104,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Creating a simple user menu for the view and updating the data model for the User." />
     <MESSAGE value="Adding API and Invoice model for the application." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding API and Invoice model for the application." />
+    <MESSAGE value="Implemented Invoice (extends User) and generated getter and setter." />
+    <MESSAGE value="Implemented Subscription MODEL (extends Invoice)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Subscription MODEL (extends Invoice)." />
   </component>
 </project>
