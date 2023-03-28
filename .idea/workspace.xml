@@ -4,15 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="">
+    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Creating a simple user menu for the view and updating the data model for the User.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/api/PaymentAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -44,8 +53,17 @@
       <option name="presentableId" value="Default" />
       <updated>1679317690667</updated>
       <workItem from="1679984694136" duration="609000" />
-      <workItem from="1679998498636" duration="161000" />
+      <workItem from="1679998498636" duration="222000" />
+      <workItem from="1679998863014" duration="3924000" />
     </task>
+    <task id="LOCAL-00001" summary="Creating a simple user menu for the view and updating the data model for the User.">
+      <created>1679998692909</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1679998692909</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -61,5 +79,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Creating a simple user menu for the view and updating the data model for the User." />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating a simple user menu for the view and updating the data model for the User." />
   </component>
 </project>
