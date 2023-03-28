@@ -4,9 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Implemented Chapter MODEL (extends Job which extends User).">
-      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Story.java" afterDir="false" />
+    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Implemented Story MODEL (extends Chapter which extends JOB -&gt; User).">
+      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Project.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/ChapterService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/InvoiceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/JobService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/ProjectService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/StoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/SubscriptionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/Chapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Chapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/Invoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Invoice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/Job.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Job.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/Story.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Story.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/Subscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Subscription.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,19 +42,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -54,7 +65,8 @@
       <updated>1679317690667</updated>
       <workItem from="1679984694136" duration="609000" />
       <workItem from="1679998498636" duration="222000" />
-      <workItem from="1679998863014" duration="8350000" />
+      <workItem from="1679998863014" duration="11417000" />
+      <workItem from="1680027171395" duration="996000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a simple user menu for the view and updating the data model for the User.">
       <created>1679998692909</created>
@@ -98,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680011064596</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Implemented Story MODEL (extends Chapter which extends JOB -&gt; User).">
+      <created>1680014928474</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1680014928475</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,6 +141,7 @@
     <MESSAGE value="Implemented Subscription MODEL (extends Invoice)." />
     <MESSAGE value="Implemented Job MODEL (extends Invoice which extends User)." />
     <MESSAGE value="Implemented Chapter MODEL (extends Job which extends User)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented Chapter MODEL (extends Job which extends User)." />
+    <MESSAGE value="Implemented Story MODEL (extends Chapter which extends JOB -&gt; User)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Story MODEL (extends Chapter which extends JOB -&gt; User)." />
   </component>
 </project>
