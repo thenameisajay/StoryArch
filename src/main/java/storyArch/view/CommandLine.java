@@ -297,7 +297,7 @@ public class CommandLine implements Serializable {
         System.out.println("""
                 1. Project Menu
                 2. View My Account Details
-                3. Send a message to user
+                3. Send a message to a user
                 4. View My Messages
                 5. Upgrade to Premium
                 6. Delete My Account
@@ -366,8 +366,43 @@ public class CommandLine implements Serializable {
     }
 
     private void upgradeToPremium() {
-        //TODO : Upgrade to premium
         System.out.println("******************");
+        System.out.println("The Premium subscription costs £ 24.99 per year.");
+        System.out.println("Do you want to upgrade to premium? (Y/N)");
+        System.out.println("******************");
+        String line = scanner.nextLine().trim();
+        if(line.length() == 1){
+            switch (line.charAt(0)) {
+                case 'Y'|'y' -> {
+                    System.out.println("Upgrading to Premium");
+                    System.out.println("******************");
+                    try {
+                        String userName = "";
+                        for (Map.Entry<String, User> entry : userInfo.entrySet()) {
+                            userName = entry.getKey();
+                        }
+                        archController.paymentAPI();
+                        archController.updateSubscriptionType(userName, SubscriptionType.Premium);
+                        System.out.println("Your subscription has been updated to Premium");
+                        System.out.println("******************");
+                        premiumMenu();
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                        basicMenu();
+                    }
+                }
+                case 'N'|'n' -> {
+                    System.out.println("Not upgrading to Premium");
+                    System.out.println("******************");
+                    basicMenu();
+                }
+                default -> System.out.println("Please enter a valid option");
+
+            }
+        }else {
+            System.out.println("Please enter a valid option");
+            upgradeToPremium();
+        }
 
     }
 
@@ -390,7 +425,7 @@ public class CommandLine implements Serializable {
         System.out.println("""
                 1. Project Menu
                 2. View My Account Details
-                3. Send a message to user
+                3. Send a message to a user
                 4. View My Messages
                 5. Renew Subscription
                 6. Delete My Account
