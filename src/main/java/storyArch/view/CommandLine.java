@@ -70,6 +70,7 @@ public class CommandLine implements Serializable {
 
     public void start() {
         startLogo();
+        System.out.println("******************");
         startMessage();
         String line;
         scanner = new Scanner(System.in);
