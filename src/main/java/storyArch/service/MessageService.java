@@ -21,12 +21,6 @@ public class MessageService implements Serializable {
         o.writeObject(messages);
         o.close();
         f.close();
-
-        FileOutputStream fi = new FileOutputStream("src/resources/messageID.ser");
-        ObjectOutputStream oi = new ObjectOutputStream(f);
-        o.writeObject(messageIDS);
-        oi.close();
-        fi.close();
     }
 
     /**
@@ -42,13 +36,10 @@ public class MessageService implements Serializable {
         messages = (Map<Integer, Message>) oi.readObject();
         oi.close();
         fi.close();
-
-        FileInputStream f = new FileInputStream("src/resources/messageID.ser");
-        ObjectInputStream o = new ObjectInputStream(fi);
-        // Read objects
-        messageIDS = (ArrayList<Integer>) o.readObject();
-        o.close();
-        f.close();
+        // Take the key value (MessageID) and add it to the arraylist
+        for (Map.Entry<Integer, Message> entry : messages.entrySet()) {
+            messageIDS.add(entry.getKey());
+        }
     }
 
     public void sendMessage(String userName, String system, String message, Date presentDate) {
@@ -63,7 +54,7 @@ public class MessageService implements Serializable {
         while (messageIDS.contains(randomNum)) {
             randomNum = rand.nextInt((1000000 - 1) + 1) + 1;
         }
-        messages.put(randomNum, new Message(userName, system, message, presentDate));
+        messages.put(randomNum, new Message(userName.toLowerCase(), system.toLowerCase(), message, presentDate));
     }
 
 
@@ -72,14 +63,23 @@ public class MessageService implements Serializable {
       if (messages.size() == 0) {
             throw new IllegalArgumentException("No messages to display");
         }
-      if (userName == null || userName.isEmpty())
+        if (userName == null || userName.isEmpty())
             throw new IllegalArgumentException("Username cannot be empty");
         for (Map.Entry<Integer, Message> entry : messages.entrySet()) {
-            if (entry.getValue().getToUser().equals(userName)) {
+            if (entry.getValue().getToUser().equals(userName.toLowerCase())) {
                 returnMessage.put(entry.getKey().toString(), entry.getValue());
             }
         }
-       return returnMessage;
+        return returnMessage;
     }
 
+    public void deleteMessage(String userName) {
+        if (userName == null || userName.isEmpty())
+            throw new IllegalArgumentException("Username cannot be empty");
+        for (Map.Entry<Integer, Message> entry : messages.entrySet()) {
+            if (entry.getValue().getToUser().equals(userName.toLowerCase())) {
+                messages.remove(entry.getKey());
+            }
+        }
+    }
 }

@@ -332,7 +332,7 @@ public class CommandLine implements Serializable {
                 case '3' -> {
                     System.out.println("Send a message to user");
                     //TODO : Create a method to send a message to a user by username in the system
-                    // sendMessage();
+                  sendMessage();
                 }
                 case '4' -> {
                     System.out.println("View My Messages");
@@ -342,17 +342,16 @@ public class CommandLine implements Serializable {
                             userName = entry.getKey();
                         }
                         messages = archController.viewMessage(userName);
+                        archController.deleteMessage(userName);
                         if (messages.isEmpty()) {
                             System.out.println("You have no messages");
                             System.out.println("******************");
                             premiumMenu();
                         } else {
                             for (Map.Entry<String, Message> entry : messages.entrySet()) {
-                                System.out.println("Message Receiver : " + entry.getValue().getToUser());
-                                System.out.println("Message ID : " + entry.getKey());
-                                System.out.println("Message : " + entry.getValue().getMessage());
-                                System.out.println("Message Date : " + entry.getValue().getTimeStamp());
                                 System.out.println("Message Sender : " + entry.getValue().getFromUser());
+                                System.out.println("Message Date : " + entry.getValue().getTimeStamp());
+                                System.out.println("Message : " + entry.getValue().getMessage());
                                 System.out.println("******************");
                             }
                             System.out.println("You have " + messages.size() + " messages");
@@ -384,6 +383,31 @@ public class CommandLine implements Serializable {
             }
         } else {
             System.out.println("Please enter a valid option");
+            premiumMenu();
+        }
+    }
+
+    private void sendMessage() {
+        System.out.println("******************");
+        System.out.println("Send a message to user");
+        System.out.println("******************");
+        System.out.println("Please enter the username of the user you want to send a message to: ");
+        String toUser = scanner.nextLine().trim();
+        System.out.println("Please enter the message you want to send: ");
+        String message = scanner.nextLine().trim();
+        Date date = new Date();
+        String fromUser = "";
+        for (Map.Entry<String, User> entry : userInfo.entrySet()) {
+            fromUser = entry.getKey();
+        }
+        try {
+            archController.checkIfUserExists(toUser);
+            archController.sendMessage(toUser, fromUser, message, date);
+            System.out.println("Message sent successfully");
+            System.out.println("******************");
+            premiumMenu();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
             premiumMenu();
         }
     }

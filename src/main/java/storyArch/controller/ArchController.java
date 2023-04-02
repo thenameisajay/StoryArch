@@ -50,10 +50,18 @@ public class ArchController implements Serializable {
     }
 
     public void sendMessage(String userName, String system, String message, Date presentDate) {
-        messageService.sendMessage(userName, system,message, presentDate);
+        messageService.sendMessage(userName, system, message, presentDate);
     }
 
     public Map<String, Message> viewMessage(String userName) {
         return messageService.viewMessage(userName);
+    }
+
+    public void checkIfUserExists(String toUser) {
+        userService.checkIfUserExists(toUser);
+    }
+
+    public void deleteMessage(String userName) {
+        messageService.deleteMessage(userName);
     }
 }

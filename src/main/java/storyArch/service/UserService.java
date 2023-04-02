@@ -42,7 +42,7 @@ public class UserService implements Serializable {
             throw new IllegalArgumentException("Username already taken");
         }
         // Add the user to the system
-        user.put(userName, new User(fullName, email, userName, password, subscriptionType, subscriptionDate));
+        user.put(userName, new User(fullName.toLowerCase(), email.toLowerCase(), userName.toLowerCase(), password, subscriptionType, subscriptionDate));
     }
 
     /**
@@ -81,6 +81,9 @@ public class UserService implements Serializable {
      */
     public Map<String, User> login(String userName, String hashedPassword) {
         Map<String, User> returnUser = new HashMap<>();
+        if (user.size() == 0) {
+            throw new IllegalArgumentException("No users registered");
+        }
         // First Check : For empty fields
         if (userName == null || userName.isEmpty())
             throw new IllegalArgumentException("Username cannot be empty");
@@ -91,7 +94,7 @@ public class UserService implements Serializable {
             throw new IllegalArgumentException("No users registered");
         }
         // Third Check : If username exists in the system.
-        if (user.containsKey(userName)) {
+        if (user.containsKey(userName.toLowerCase())) {
             // Fourth Check : If password is correct
             if (user.get(userName).getPassword().equals(hashedPassword)) {
                 returnUser.put(userName, user.get(userName));
@@ -111,11 +114,12 @@ public class UserService implements Serializable {
             throw new IllegalArgumentException("No users registered");
         }
         // Second Check
-        if (user.containsKey(userName)) {
+        if (user.containsKey(userName.toLowerCase())) {
             user.remove(userName);
         } else {
             throw new IllegalArgumentException("Username does not exist");
         }
+
     }
 
     public void updateSubscriptionType(String userName, SubscriptionType subscriptionType) {
@@ -128,6 +132,12 @@ public class UserService implements Serializable {
             user.get(userName).setSubscriptionType(subscriptionType);
         } else {
             throw new IllegalArgumentException("Username does not exist");
+        }
+    }
+
+    public void checkIfUserExists(String toUser) {
+        if (!user.containsKey(toUser.toLowerCase())) {
+            throw new IllegalArgumentException("User does not exist");
         }
     }
 }
