@@ -5,7 +5,10 @@ import main.java.storyArch.model.Message;
 import main.java.storyArch.model.SubscriptionType;
 import main.java.storyArch.model.User;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -17,7 +20,8 @@ public class CommandLine implements Serializable {
     ArchController archController;
 
     private Scanner scanner;
-    // Saving cache of data from the service layer.
+
+    // Saving cache data from the service layer.
     private Map<String, User> userInfo = new HashMap<>();
     private Map<String, Message> messages = new HashMap<>();
     private boolean loginStatus = false;
@@ -29,7 +33,22 @@ public class CommandLine implements Serializable {
 
     public void main() {
         System.out.println("Hello User!");
+        checkConnection();
         start();
+    }
+
+    private void checkConnection() {
+        try {
+            InetAddress address = InetAddress.getByName("www.google.com");
+            System.out.println("You are Online.");
+            System.out.println("******************");
+        } catch (UnknownHostException e) {
+            System.out.println("You are Offline, all data will be saved locally on your device until you are online.");
+            System.out.println("Connection Status: false");
+        } catch (IOException e) {
+            System.out.println("You are Offline, all data will be saved locally on your device until you are online.");
+            System.out.println("Connection Status: false");
+        }
     }
 
     public void startMessage() {

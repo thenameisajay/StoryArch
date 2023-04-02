@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="now Free users can upgrade to premium.">
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/api/PaymentAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/api/PaymentAPI.java" afterDir="false" />
+    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="now added publisher options to the API">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +84,7 @@
       <workItem from="1680027171395" duration="1279000" />
       <workItem from="1680075675647" duration="10000" />
       <workItem from="1680269095942" duration="95000" />
-      <workItem from="1680434975122" duration="23624000" />
+      <workItem from="1680434975122" duration="24307000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a simple user menu for the view and updating the data model for the User.">
       <created>1679998692909</created>
@@ -232,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680467851455</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="now added publisher options to the API">
+      <created>1680468087459</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1680468087459</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,44 +280,40 @@
     <MESSAGE value="Free plan users can now send and receive messages to all users in the system." />
     <MESSAGE value="Added JavaDoc for some of the features." />
     <MESSAGE value="now Free users can upgrade to premium." />
-    <option name="LAST_COMMIT_MESSAGE" value="now Free users can upgrade to premium." />
+    <MESSAGE value="now added publisher options to the API" />
+    <option name="LAST_COMMIT_MESSAGE" value="now added publisher options to the API" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>153</line>
+          <line>172</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>558</line>
+          <line>577</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>557</line>
+          <line>576</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>504</line>
+          <line>523</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>505</line>
+          <line>524</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>506</line>
+          <line>525</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
@@ -320,6 +324,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
+          <line>39</line>
+          <properties class="main.java.storyArch.view.CommandLine" method="checkConnection">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
