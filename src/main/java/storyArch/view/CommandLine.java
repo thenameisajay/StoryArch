@@ -2,12 +2,15 @@ package main.java.storyArch.view;
 
 import main.java.storyArch.controller.ArchController;
 import main.java.storyArch.model.SubscriptionType;
+import main.java.storyArch.model.User;
 
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 // Command Line View for Story Arch application
@@ -23,6 +26,9 @@ public class CommandLine implements Serializable {
 
 
     // Saving cache of resources.data from the service layer.
+    private Map<String, User> userInfo = new HashMap<>();
+
+    private boolean loginStatus = false;
 
 
     public void main() {
@@ -35,9 +41,9 @@ public class CommandLine implements Serializable {
         System.out.println("Please select an option:");
         System.out.println("1. Login");
         System.out.println("2. Register");
-        System.out.println("3. Exit");
-        System.out.println("4.Save Data");
-        System.out.println("5.Load Data");
+        System.out.println("3.Save Data");
+        System.out.println("4.Load Data");
+        System.out.println("5. Exit");
         System.out.println("Enter your choice: ");
         System.out.println("******************");
 
@@ -54,21 +60,17 @@ public class CommandLine implements Serializable {
                 if (line.length() == 1) {
                     switch (line.charAt(0)) {
                         case '1' -> {
-                            System.out.println("Login");
+                            System.out.println("Login Page");
                             // TODO :  Add login method
                             login();
                         }
 
                         case '2' -> {
-                            System.out.println("Register");
+                            System.out.println("Register Page");
                             register();
 
                         }
                         case '3' -> {
-                            System.out.println("Exit");
-                            exit();
-                        }
-                        case '4' -> {
                             System.out.println("Save Data");
                             try {
                                 archController.saveData();
@@ -80,7 +82,7 @@ public class CommandLine implements Serializable {
                                 start();
                             }
                         }
-                        case '5' -> {
+                        case '4' -> {
                             System.out.println("Load Data");
                             try {
                                 archController.loadData();
@@ -92,6 +94,10 @@ public class CommandLine implements Serializable {
                                 start();
                             }
                         }
+                        case '5' -> {
+                            System.out.println("Exit");
+                            exit();
+                        }
                         default -> System.out.println("Please enter a valid option");
                     }
 
@@ -100,7 +106,7 @@ public class CommandLine implements Serializable {
                     start();
                 }
 
-            } while (line.charAt(0) != '4' || line.length() != 1);
+            } while (line.charAt(0) != '6' || line.length() != 1);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             start();
@@ -201,9 +207,49 @@ public class CommandLine implements Serializable {
     }
 
     private void login() {
+        System.out.println("******************");
         System.out.println("***Welcome to Story-Arch Login page***");
         System.out.println("The No.1 choice for Aspiring Writers.");
+        System.out.println("******************");
         System.out.println("Please enter your username: ");
+        String userName = scanner.nextLine().trim();
+        System.out.println("Please enter your password: ");
+        String password = scanner.nextLine().trim();
+        try {
+            String hashedPassword = stringTosh256(password);
+            userInfo = archController.login(userName, hashedPassword);
+            System.out.println("Login Successful");
+            System.out.println("******************");
+            loginStatus = true;
+            for (Map.Entry<String, User> entry : userInfo.entrySet()) {
+                if (entry.getKey().equalsIgnoreCase(userName)) {
+                    if (entry.getValue().getSubscriptionType().equals(SubscriptionType.Premium)) {
+                        premiumMenu();
+                    } else {
+                        basicMenu();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            start();
+        }
+
+    }
+
+    private void basicMenu() {
+        System.out.println("******************");
+        System.out.println("Welcome to the Basic Menu");
+        System.out.println("******************");
+        start();
+
+    }
+
+    private void premiumMenu() {
+        System.out.println("******************");
+        System.out.println("Welcome to the Premium Menu");
+        System.out.println("******************");
+        start();
 
     }
 

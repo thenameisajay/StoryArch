@@ -72,4 +72,36 @@ public class UserService implements Serializable {
         oi.close();
         fi.close();
     }
+
+    /**
+     * Login to the system
+     *
+     * @param userName       - Username of the user
+     * @param hashedPassword - Password of the user
+     */
+    public Map<String, User> login(String userName, String hashedPassword) {
+        Map<String, User> returnUser = new HashMap<>();
+        // First Check : For empty fields
+        if (userName == null || userName.isEmpty())
+            throw new IllegalArgumentException("Username cannot be empty");
+        if (hashedPassword == null || hashedPassword.isEmpty())
+            throw new IllegalArgumentException("Password cannot be empty");
+        // Second Check : If userdata is empty
+        if (user.isEmpty()) {
+            throw new IllegalArgumentException("No users registered");
+        }
+        // Third Check : If username exists in the system.
+        if (user.containsKey(userName)) {
+            // Fourth Check : If password is correct
+            if (user.get(userName).getPassword().equals(hashedPassword)) {
+                returnUser.put(userName, user.get(userName));
+                return returnUser;
+            } else {
+                throw new IllegalArgumentException("Incorrect password");
+            }
+        } else {
+            throw new IllegalArgumentException("Username does not exist");
+        }
+
+    }
 }
