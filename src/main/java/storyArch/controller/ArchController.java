@@ -64,4 +64,8 @@ public class ArchController implements Serializable {
     public void deleteMessage(String userName) {
         messageService.deleteMessage(userName);
     }
+
+    public void updateSubscriptionDate(String userName, Date presentDate) {
+        userService.updateSubscriptionDate(userName, presentDate);
+    }
 }

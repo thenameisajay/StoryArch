@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Message Service has been initialised and now able to view any messages from user or system ( only for warning purposes at the moment).">
+    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Message Service is now fully functional and users can send and view messages to and forth.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/api/PublishersAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/userData.ser" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +87,7 @@
       <workItem from="1680027171395" duration="1279000" />
       <workItem from="1680075675647" duration="10000" />
       <workItem from="1680269095942" duration="95000" />
-      <workItem from="1680434975122" duration="16716000" />
+      <workItem from="1680434975122" duration="17563000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a simple user menu for the view and updating the data model for the User.">
       <created>1679998692909</created>
@@ -188,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680456199780</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Message Service is now fully functional and users can send and view messages to and forth.">
+      <created>1680457892768</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1680457892768</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,7 +227,8 @@
     <MESSAGE value="premium menu is up and running , some of the menu options such as delete my account and log out works." />
     <MESSAGE value="added initialisation check for premium users :&#10;     * To check if the subscription of a premium user is still valid or not.&#10;     * If the subscription is expired, the user is downgraded to a basic user.&#10;     * If the subscription is still about to expire, the user is notified.&#10;     *&#10;     * @return - Returns true if the subscription is valid or false if the subscription is expired&#10;     &#10;     Also now able to view ACCOUNT DETAILS AND HOW MANY DAYS UNTIL SUBSCRIPTION EXPIRES." />
     <MESSAGE value="Message Service has been initialised and now able to view any messages from user or system ( only for warning purposes at the moment)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Message Service has been initialised and now able to view any messages from user or system ( only for warning purposes at the moment)." />
+    <MESSAGE value="Message Service is now fully functional and users can send and view messages to and forth." />
+    <option name="LAST_COMMIT_MESSAGE" value="Message Service is now fully functional and users can send and view messages to and forth." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -238,12 +245,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>404</line>
+          <line>459</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>403</line>
+          <line>458</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

@@ -331,7 +331,6 @@ public class CommandLine implements Serializable {
                 }
                 case '3' -> {
                     System.out.println("Send a message to user");
-                    //TODO : Create a method to send a message to a user by username in the system
                   sendMessage();
                 }
                 case '4' -> {
@@ -367,8 +366,7 @@ public class CommandLine implements Serializable {
                 }
                 case '5' -> {
                     System.out.println("Renew Subscription");
-                    // TODO : Create a method to renew subscription
-                    //  renewSubscription();
+                    renewSubscription();
                 }
                 case '6' -> {
                     System.out.println("Delete My Account");
@@ -385,6 +383,54 @@ public class CommandLine implements Serializable {
             System.out.println("Please enter a valid option");
             premiumMenu();
         }
+    }
+
+    private void renewSubscription() {
+        // Premium users can renew their subscription
+        System.out.println("******************");
+        System.out.println("Renew Subscription");
+        System.out.println("******************");
+        // From the user info map get the subscriptionDate of the user
+        System.out.println("Your subscription will be renewed for one year from the date of renewal");
+        System.out.println("******************");
+        System.out.println("Do you want to renew your subscription? (Y/N)");
+        String line = scanner.nextLine().trim();
+        switch (line.charAt(0)) {
+            case 'y' | 'Y' -> {
+                Date date = null;
+                String userName = "";
+                for (Map.Entry<String, User> entry : userInfo.entrySet()) {
+                    if (entry.getValue().getSubscriptionType().equals(SubscriptionType.Premium)) {
+                        date = entry.getValue().getSubscriptionStartDate();
+                        userName = entry.getKey();
+                    }
+                }
+                // Get Date of present
+                Date presentDate = new Date();
+                try {
+                    archController.updateSubscriptionType(userName, SubscriptionType.Premium);
+                    archController.updateSubscriptionDate(userName, presentDate);
+                    System.out.println("Your subscription has been renewed");
+                    System.out.println("******************");
+                    premiumMenu();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+
+            case 'n' | 'N' -> {
+                System.out.println("You have chosen not to renew your subscription");
+                System.out.println("******************");
+                premiumMenu();
+            }
+            default -> {
+                System.out.println("Please enter a valid option");
+                System.out.println("******************");
+                premiumMenu();
+            }
+        }
+
+
     }
 
     private void sendMessage() {
@@ -441,6 +487,7 @@ public class CommandLine implements Serializable {
                 System.out.println("******************");
             }
         }
+        premiumMenu();
     }
 
     private void deleteAccount() {

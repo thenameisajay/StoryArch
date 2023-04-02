@@ -140,4 +140,17 @@ public class UserService implements Serializable {
             throw new IllegalArgumentException("User does not exist");
         }
     }
+
+    public void updateSubscriptionDate(String userName, Date presentDate) {
+        // First Check : If userdata is empty
+        if (user.isEmpty()) {
+            throw new IllegalArgumentException("No users registered");
+        }
+        // Second Check
+        if (user.containsKey(userName.toLowerCase())) {
+            user.get(userName).setSubscriptionStartDate(presentDate);
+        } else {
+            throw new IllegalArgumentException("Username does not exist");
+        }
+    }
 }
