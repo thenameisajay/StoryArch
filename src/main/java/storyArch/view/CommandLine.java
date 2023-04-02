@@ -299,8 +299,94 @@ public class CommandLine implements Serializable {
         System.out.println("******************");
         System.out.println("Welcome to the Basic Menu");
         System.out.println("******************");
-        start();
+        System.out.println("""
+                1. Project Menu
+                2. View My Account Details
+                3. Send a message to user
+                4. View My Messages
+                5. Upgrade to Premium
+                6. Delete My Account
+                7. Logout""");
+        System.out.println("******************");
+        System.out.println("Please enter your choice: ");
+        String line = scanner.nextLine().trim();
+        if(line.length() == 1) {
+            switch (line.charAt(0)) {
+                case '1' -> {
+                    System.out.println("Project Menu");
+                    //TODO : Create a project menu as per the requirements
+                    //  projectMenu();
+                }
+                case '2' -> {
+                    System.out.println("View My Account Details");
+                    viewAccountDetails();
+                }
+                case '3' -> {
+                    System.out.println("Send a message to user");
+                    sendMessage();
+                }
+                case '4' -> {
+                    System.out.println("View My Messages");
+                    try {
+                        String userName = "";
+                        for (Map.Entry<String, User> entry : userInfo.entrySet()) {
+                            userName = entry.getKey();
+                        }
+                        messages = archController.viewMessage(userName);
+                        archController.deleteMessage(userName);
+                        if (messages.isEmpty()) {
+                            System.out.println("You have no messages");
+                            System.out.println("******************");
+                            basicMenu();
+                        } else {
+                            printInformation();
+                            basicMenu();
+                        }
+                    }
+                    catch(Exception e){
+                        System.out.println(e.getMessage());
+                        basicMenu();
+                    }
+                }
+                case '5' -> {
+                    System.out.println("Upgrade to Premium");
+                    upgradeToPremium();
+                }
+                case '6' -> {
+                    System.out.println("Delete My Account");
+                    deleteAccount();
+                }
+                case '7' -> {
+                    System.out.println("Logging out !");
+                    System.out.println("******************");
+                    logout();
+                    loginStatus = false;
+                    userInfo.clear();
+                }
+                default -> System.out.println("Please enter a valid option");
+            }
+        } else {
+            System.out.println("Please enter a valid option");
+            basicMenu();
+        }
+    }
 
+    private void upgradeToPremium() {
+        //TODO : Upgrade to premium
+        System.out.println("******************");
+
+    }
+
+    private void printInformation() {
+        for (Map.Entry<String, Message> entry : messages.entrySet()) {
+            System.out.println("Message Sender : " + entry.getValue().getFromUser());
+            System.out.println("Message Date : " + entry.getValue().getTimeStamp());
+            System.out.println("Message : " + entry.getValue().getMessage());
+            System.out.println("******************");
+        }
+        System.out.println("You have " + messages.size() + " messages");
+        System.out.println("******************");
+        messages.clear();
     }
 
     private void premiumMenu() {
@@ -347,15 +433,7 @@ public class CommandLine implements Serializable {
                             System.out.println("******************");
                             premiumMenu();
                         } else {
-                            for (Map.Entry<String, Message> entry : messages.entrySet()) {
-                                System.out.println("Message Sender : " + entry.getValue().getFromUser());
-                                System.out.println("Message Date : " + entry.getValue().getTimeStamp());
-                                System.out.println("Message : " + entry.getValue().getMessage());
-                                System.out.println("******************");
-                            }
-                            System.out.println("You have " + messages.size() + " messages");
-                            System.out.println("******************");
-                            messages.clear();
+                            printInformation();
                             premiumMenu();
                         }
                     }
@@ -376,6 +454,8 @@ public class CommandLine implements Serializable {
                     System.out.println("Logging out !");
                     System.out.println("******************");
                     logout();
+                    loginStatus = false;
+                    userInfo.clear();
                 }
                 default -> System.out.println("Please enter a valid option");
             }
@@ -451,10 +531,19 @@ public class CommandLine implements Serializable {
             archController.sendMessage(toUser, fromUser, message, date);
             System.out.println("Message sent successfully");
             System.out.println("******************");
-            premiumMenu();
+            if (userInfo.get(fromUser).getSubscriptionType().equals(SubscriptionType.Premium)) {
+                premiumMenu();
+            } else {
+                basicMenu();
+            }
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            premiumMenu();
+            if (userInfo.get(fromUser).getSubscriptionType().equals(SubscriptionType.Premium)) {
+                premiumMenu();
+            } else {
+                basicMenu();
+            }
         }
     }
 
@@ -481,13 +570,17 @@ public class CommandLine implements Serializable {
             cal.add(Calendar.YEAR, 1);
             Date dateAfterOneYear = cal.getTime();
             if (dateAfterOneYear.before(new Date())) {
-                // This (if-methid is left blank) as it will never take place as there is a check in the initialiseSubscription method
+                // This (if-method is left blank) as it will never take place as there is a check in the initialiseSubscription method
             } else {
                 System.out.println("Your subscription will expire in " + (dateAfterOneYear.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24) + " days");
                 System.out.println("******************");
             }
         }
-        premiumMenu();
+        if (userInfo.entrySet().iterator().next().getValue().getSubscriptionType().equals(SubscriptionType.Premium)) {
+            premiumMenu();
+        } else {
+            basicMenu();
+        }
     }
 
     private void deleteAccount() {
@@ -500,7 +593,11 @@ public class CommandLine implements Serializable {
             start();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            premiumMenu();
+            if (userInfo.entrySet().iterator().next().getValue().getSubscriptionType().equals(SubscriptionType.Premium)) {
+                premiumMenu();
+            } else {
+                basicMenu();
+            }
         }
     }
 
