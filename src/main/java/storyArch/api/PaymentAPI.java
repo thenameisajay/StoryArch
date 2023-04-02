@@ -16,6 +16,7 @@ public class PaymentAPI {
     }
 
     private void premiumSubscription() {
+        System.out.println("*********************************");
         System.out.println("You have successfully subscribed to premium subscription");
         System.out.println("You can now access all the premium features");
         System.out.println("""

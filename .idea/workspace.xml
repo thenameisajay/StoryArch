@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Added JavaDoc for some of the features.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" afterDir="false" />
+    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="now Free users can upgrade to premium.">
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/api/PaymentAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/api/PaymentAPI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +83,7 @@
       <workItem from="1680027171395" duration="1279000" />
       <workItem from="1680075675647" duration="10000" />
       <workItem from="1680269095942" duration="95000" />
-      <workItem from="1680434975122" duration="23562000" />
+      <workItem from="1680434975122" duration="23624000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a simple user menu for the view and updating the data model for the User.">
       <created>1679998692909</created>
@@ -226,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680466130092</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="now Free users can upgrade to premium.">
+      <created>1680467851455</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1680467851455</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,7 +271,8 @@
     <MESSAGE value="free menu is up and running... Free plan users can now access the relevant menu options." />
     <MESSAGE value="Free plan users can now send and receive messages to all users in the system." />
     <MESSAGE value="Added JavaDoc for some of the features." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added JavaDoc for some of the features." />
+    <MESSAGE value="now Free users can upgrade to premium." />
+    <option name="LAST_COMMIT_MESSAGE" value="now Free users can upgrade to premium." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
