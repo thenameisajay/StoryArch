@@ -104,4 +104,17 @@ public class UserService implements Serializable {
         }
 
     }
+
+    public void deleteAccount(String userName) {
+        // First Check : If userdata is empty
+        if (user.isEmpty()) {
+            throw new IllegalArgumentException("No users registered");
+        }
+        // Second Check
+        if (user.containsKey(userName)) {
+            user.remove(userName);
+        } else {
+            throw new IllegalArgumentException("Username does not exist");
+        }
+    }
 }

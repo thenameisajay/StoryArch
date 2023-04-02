@@ -249,9 +249,79 @@ public class CommandLine implements Serializable {
         System.out.println("******************");
         System.out.println("Welcome to the Premium Menu");
         System.out.println("******************");
-        start();
-
+        System.out.println("""
+                1. Project Menu
+                2. View My Account Details
+                3. Send a message to user
+                4.View My Messages
+                5. Delete My Account
+                6. Logout""");
+        System.out.println("******************");
+        System.out.println("Please enter your choice: ");
+        String line = scanner.nextLine().trim();
+        if (line.length() == 1) {
+            switch (line.charAt(0)) {
+                case '1' -> {
+                    System.out.println("Project Menu");
+                    //TODO : Create a project menu as per the requirements
+                    //  projectMenu();
+                }
+                case '2' -> {
+                    System.out.println("View My Account Details");
+                    //TODO : Create a method to view account details
+                    //  viewAccountDetails();
+                }
+                case '3' -> {
+                    System.out.println("Send a message to user");
+                    //TODO : Create a method to send a message to a user by username in the system
+                    // sendMessage();
+                }
+                case '4' -> {
+                    System.out.println("View My Messages");
+                    // TODO : Create a method to view messages
+                    //  viewMessages();
+                }
+                case '5' -> {
+                    System.out.println("Delete My Account");
+                    // TODO : Create a method to delete account
+                    deleteAccount();
+                }
+                case '6' -> {
+                    System.out.println("Logging out !");
+                    System.out.println("******************");
+                    logout();
+                }
+                default -> System.out.println("Please enter a valid option");
+            }
+        } else {
+            System.out.println("Please enter a valid option");
+            premiumMenu();
+        }
     }
+
+    private void deleteAccount() {
+        try {
+            String userName = userInfo.entrySet().iterator().next().getKey();
+            archController.deleteAccount(userName);
+            System.out.println("Account deleted successfully");
+            System.out.println("Thank you for using Story Arch!");
+            System.out.println("******************");
+            start();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            premiumMenu();
+        }
+    }
+
+    private void logout() {
+        System.out.println("******************");
+        System.out.println("You have been logged out");
+        System.out.println("******************");
+        loginStatus = false;
+        userInfo.clear();
+        start();
+    }
+
 
     public void exit() {
         System.out.println("*************************");

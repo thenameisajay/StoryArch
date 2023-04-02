@@ -34,4 +34,8 @@ public class ArchController implements Serializable {
     public Map<String, User> login(String userName, String hashedPassword) {
         return userService.login(userName, hashedPassword);
     }
+
+    public void deleteAccount(String userName) {
+        userService.deleteAccount(userName);
+    }
 }
