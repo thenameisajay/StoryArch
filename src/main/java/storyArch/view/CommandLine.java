@@ -173,7 +173,7 @@ public class CommandLine implements Serializable {
                 // Get the date of subscription
                 Date subscriptionDate = new Date();
                 try {
-                    String hashedPassword = stringTosh256(password);
+                    String hashedPassword = stringToSHA256(password);
                     archController.register(fullName, email, userName, hashedPassword, subscriptionType, subscriptionDate);
                     System.out.println("Registration Successful");
                     System.out.println("You have been registered as a free user");
@@ -197,7 +197,7 @@ public class CommandLine implements Serializable {
                 SubscriptionType subscriptionType = SubscriptionType.Premium;
                 Date subscriptionDate = new Date();
                 try {
-                    String hashedPassword = stringTosh256(password);
+                    String hashedPassword = stringToSHA256(password);
                     archController.register(fullName, email, userName, hashedPassword, subscriptionType, subscriptionDate);
                     archController.paymentAPI();
                     System.out.println("Registration Successful");
@@ -224,7 +224,7 @@ public class CommandLine implements Serializable {
      * @param password - Password to be hashed
      * @return - Hashed password
      */
-    private String stringTosh256(String password) {
+    private String stringToSHA256(String password) {
         String hashedPassword = "";
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -252,7 +252,7 @@ public class CommandLine implements Serializable {
         System.out.println("Please enter your password: ");
         String password = scanner.nextLine().trim();
         try {
-            String hashedPassword = stringTosh256(password);
+            String hashedPassword = stringToSHA256(password);
             userInfo = archController.login(userName, hashedPassword);
             System.out.println("Login Successful");
             System.out.println("******************");
