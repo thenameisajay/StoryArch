@@ -6,9 +6,8 @@ import java.io.*;
 import java.util.*;
 
 public class MessageService implements Serializable {
-    private Map<Integer, Message> messages = new HashMap<>();
     ArrayList<Integer> messageIDS = new ArrayList<>();
-
+    private Map<Integer, Message> messages = new HashMap<>();
 
     /**
      * Save the user data to a file
@@ -58,9 +57,9 @@ public class MessageService implements Serializable {
     }
 
 
-    public Map<String,Message> viewMessage(String userName){
-      Map<String,Message> returnMessage = new HashMap<>();
-      if (messages.size() == 0) {
+    public Map<String, Message> viewMessage(String userName) {
+        Map<String, Message> returnMessage = new HashMap<>();
+        if (messages.size() == 0) {
             throw new IllegalArgumentException("No messages to display");
         }
         if (userName == null || userName.isEmpty())

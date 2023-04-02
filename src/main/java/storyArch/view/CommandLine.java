@@ -17,20 +17,15 @@ public class CommandLine implements Serializable {
     ArchController archController;
 
     private Scanner scanner;
+    // Saving cache of data from the service layer.
+    private Map<String, User> userInfo = new HashMap<>();
+    private Map<String, Message> messages = new HashMap<>();
+    private boolean loginStatus = false;
+
 
     public CommandLine(ArchController archController) {
         this.archController = archController;
     }
-
-
-    // Saving cache of data from the service layer.
-    private Map<String, User> userInfo = new HashMap<>();
-
-    private Map<String, Message> messages =  new HashMap<>();
-
-
-    private boolean loginStatus = false;
-
 
     public void main() {
         System.out.println("Hello User!");
@@ -288,7 +283,7 @@ public class CommandLine implements Serializable {
             if (dateAfterOneYear.before(new Date())) {
                 // Get Date of present
                 Date presentDate = new Date();
-             archController.sendMessage(userName,"System","Your subscription is about to expire. Please renew your subscription",presentDate);
+                archController.sendMessage(userName, "System", "Your subscription is about to expire. Please renew your subscription", presentDate);
             }
         }
 
@@ -310,7 +305,7 @@ public class CommandLine implements Serializable {
         System.out.println("******************");
         System.out.println("Please enter your choice: ");
         String line = scanner.nextLine().trim();
-        if(line.length() == 1) {
+        if (line.length() == 1) {
             switch (line.charAt(0)) {
                 case '1' -> {
                     System.out.println("Project Menu");
@@ -342,8 +337,7 @@ public class CommandLine implements Serializable {
                             printInformation();
                             basicMenu();
                         }
-                    }
-                    catch(Exception e){
+                    } catch (Exception e) {
                         System.out.println(e.getMessage());
                         basicMenu();
                     }
@@ -417,7 +411,7 @@ public class CommandLine implements Serializable {
                 }
                 case '3' -> {
                     System.out.println("Send a message to user");
-                  sendMessage();
+                    sendMessage();
                 }
                 case '4' -> {
                     System.out.println("View My Messages");
@@ -436,8 +430,7 @@ public class CommandLine implements Serializable {
                             printInformation();
                             premiumMenu();
                         }
-                    }
-                    catch(Exception e){
+                    } catch (Exception e) {
                         System.out.println(e.getMessage());
                         premiumMenu();
                     }
