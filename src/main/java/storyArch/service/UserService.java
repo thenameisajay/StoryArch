@@ -1,23 +1,75 @@
 package main.java.storyArch.service;
 
-public class UserService {
+import main.java.storyArch.model.SubscriptionType;
+import main.java.storyArch.model.User;
 
+import java.io.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
-    // Create a new user in the database
-    public void createUser() {
+public class UserService implements Serializable {
 
+    private Map<String, User> user = new HashMap<>();
+
+    /**
+     * Register a new user to the system
+     *
+     * @param fullName         - Full Name of the user
+     * @param email            - Email of the user
+     * @param userName         - Username of the user
+     * @param password         - Password of the user
+     * @param subscriptionType
+     * @param subscriptionDate
+     */
+    public void register(String fullName, String email, String userName, String password, SubscriptionType subscriptionType, Date subscriptionDate) {
+        // First Check for empty fields
+        if (fullName.isEmpty() || email.isEmpty() || password.isEmpty() || userName.isEmpty()) {
+            throw new IllegalArgumentException("All fields are required");
+        }
+        // Second check : For validation of full name with spaces, email and username
+        if (!fullName.matches("[a-zA-Z ]+")) {
+            throw new IllegalArgumentException("Full name can only contain alphabets and spaces");
+        }
+        if (!email.matches("^(.+)@(.+)$")) {
+            throw new IllegalArgumentException("Invalid email address");
+        }
+        if (!userName.matches("[a-zA-Z0-9]+")) {
+            throw new IllegalArgumentException("Username can only contain alphabets and numbers");
+        }
+        // Check if the username is already taken
+        if (user.containsKey(userName)) {
+            throw new IllegalArgumentException("Username already taken");
+        }
+        // Add the user to the system
+        user.put(userName, new User(fullName, email, userName, password, subscriptionType, subscriptionDate));
     }
 
-    // Delete a user from the database
-    public void deleteUser() {
-
+    /**
+     * Save the user data to a file
+     *
+     * @throws IOException - If the file is not found
+     */
+    public void saveData() throws IOException {
+        FileOutputStream f = new FileOutputStream("src/resources/userData.ser");
+        ObjectOutputStream o = new ObjectOutputStream(f);
+        o.writeObject(user);
+        o.close();
+        f.close();
     }
 
-
-    // Update a user in the database
-    public void updateUser() {
-
+    /**
+     * Load the user data from a file
+     *
+     * @throws IOException            - If the file is not found
+     * @throws ClassNotFoundException - If the class is not found
+     */
+    public void loadData() throws IOException, ClassNotFoundException {
+        FileInputStream fi = new FileInputStream("src/resources/userData.ser");
+        ObjectInputStream oi = new ObjectInputStream(fi);
+        // Read objects
+        user = (Map<String, User>) oi.readObject();
+        oi.close();
+        fi.close();
     }
-
-
 }

@@ -1,7 +1,31 @@
 package main.java.storyArch.controller;
 
-public class ArchController {
+import main.java.storyArch.api.PaymentAPI;
+import main.java.storyArch.model.SubscriptionType;
+import main.java.storyArch.service.UserService;
 
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Date;
 
+public class ArchController implements Serializable {
+    UserService userService = new UserService();
 
+    PaymentAPI paymentAPI = new PaymentAPI();
+
+    public void register(String fullName, String email, String userName, String password, SubscriptionType subscriptionType, Date subscriptionDate) {
+        userService.register(fullName, email, userName, password, subscriptionType, subscriptionDate);
+    }
+
+    public void saveData() throws IOException {
+        userService.saveData();
+    }
+
+    public void loadData() throws IOException, ClassNotFoundException {
+        userService.loadData();
+    }
+
+    public void paymentAPI() {
+        paymentAPI.redirectToPaymentGateway();
+    }
 }
