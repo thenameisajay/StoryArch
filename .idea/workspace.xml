@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="premium menu is up and running , some of the menu options such as delete my account and log out works.">
+    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="added initialisation check for premium users :&#10;     * To check if the subscription of a premium user is still valid or not.&#10;     * If the subscription is expired, the user is downgraded to a basic user.&#10;     * If the subscription is still about to expire, the user is notified.&#10;     *&#10;     * @return - Returns true if the subscription is valid or false if the subscription is expired&#10;     &#10;     Also now able to view ACCOUNT DETAILS AND HOW MANY DAYS UNTIL SUBSCRIPTION EXPIRES.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +87,7 @@
       <workItem from="1680027171395" duration="1279000" />
       <workItem from="1680075675647" duration="10000" />
       <workItem from="1680269095942" duration="95000" />
-      <workItem from="1680434975122" duration="12479000" />
+      <workItem from="1680434975122" duration="14999000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a simple user menu for the view and updating the data model for the User.">
       <created>1679998692909</created>
@@ -172,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680448243015</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="added initialisation check for premium users :&#10;     * To check if the subscription of a premium user is still valid or not.&#10;     * If the subscription is expired, the user is downgraded to a basic user.&#10;     * If the subscription is still about to expire, the user is notified.&#10;     *&#10;     * @return - Returns true if the subscription is valid or false if the subscription is expired&#10;     &#10;     Also now able to view ACCOUNT DETAILS AND HOW MANY DAYS UNTIL SUBSCRIPTION EXPIRES.">
+      <created>1680450018710</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1680450018711</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,20 +211,35 @@
     <MESSAGE value="Reconfigured the entire system , with base model reconfiguration, now able to register as user (basic or premium)." />
     <MESSAGE value="Now successfully able to log-in to the system using sha-256 authentication and based on the subscription type , the respective menu is shown." />
     <MESSAGE value="premium menu is up and running , some of the menu options such as delete my account and log out works." />
-    <option name="LAST_COMMIT_MESSAGE" value="premium menu is up and running , some of the menu options such as delete my account and log out works." />
+    <MESSAGE value="added initialisation check for premium users :&#10;     * To check if the subscription of a premium user is still valid or not.&#10;     * If the subscription is expired, the user is downgraded to a basic user.&#10;     * If the subscription is still about to expire, the user is notified.&#10;     *&#10;     * @return - Returns true if the subscription is valid or false if the subscription is expired&#10;     &#10;     Also now able to view ACCOUNT DETAILS AND HOW MANY DAYS UNTIL SUBSCRIPTION EXPIRES." />
+    <option name="LAST_COMMIT_MESSAGE" value="added initialisation check for premium users :&#10;     * To check if the subscription of a premium user is still valid or not.&#10;     * If the subscription is expired, the user is downgraded to a basic user.&#10;     * If the subscription is still about to expire, the user is notified.&#10;     *&#10;     * @return - Returns true if the subscription is valid or false if the subscription is expired&#10;     &#10;     Also now able to view ACCOUNT DETAILS AND HOW MANY DAYS UNTIL SUBSCRIPTION EXPIRES." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java</url>
-          <line>18</line>
+          <line>22</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>155</line>
+          <line>158</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
+          <line>343</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
+          <line>69</line>
+          <properties class="main.java.storyArch.service.MessageService" method="viewMessage">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

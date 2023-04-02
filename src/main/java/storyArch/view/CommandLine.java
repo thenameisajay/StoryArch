@@ -1,6 +1,7 @@
 package main.java.storyArch.view;
 
 import main.java.storyArch.controller.ArchController;
+import main.java.storyArch.model.Message;
 import main.java.storyArch.model.SubscriptionType;
 import main.java.storyArch.model.User;
 
@@ -22,8 +23,11 @@ public class CommandLine implements Serializable {
     }
 
 
-    // Saving cache of resources.data from the service layer.
+    // Saving cache of data from the service layer.
     private Map<String, User> userInfo = new HashMap<>();
+
+    private Map<String, Message> messages =  new HashMap<>();
+
 
     private boolean loginStatus = false;
 
@@ -58,7 +62,6 @@ public class CommandLine implements Serializable {
                     switch (line.charAt(0)) {
                         case '1' -> {
                             System.out.println("Login Page");
-                            // TODO :  Add login method
                             login();
                         }
 
@@ -246,9 +249,7 @@ public class CommandLine implements Serializable {
      * @return - Returns true if the subscription is valid or false if the subscription is expired
      */
     private boolean initialiseSubscription() {
-        //TODO: Check if the subscription is still valid
-        // To check the status of the subscription
-        // Check if subcription is expired or not if the date is over a year
+
         Date date = null;
         String userName = "";
         boolean status = true;
@@ -277,7 +278,7 @@ public class CommandLine implements Serializable {
                 }
             }
         }
-        // Check if subscription is about to expire and give a warning
+        // Check if subscription (lasts about a year) is about to expire in less than month and give a warning
         if (date != null) {
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);
@@ -285,10 +286,12 @@ public class CommandLine implements Serializable {
             cal.add(Calendar.MONTH, -1);
             Date dateAfterOneYear = cal.getTime();
             if (dateAfterOneYear.before(new Date())) {
-                //TODO : Drop a message to the user to renew the subscription from the system.
-                status = true;
+                // Get Date of present
+                Date presentDate = new Date();
+             archController.sendMessage(userName,"System","Your subscription is about to expire. Please renew your subscription",presentDate);
             }
         }
+
         return status;
     }
 
@@ -333,8 +336,35 @@ public class CommandLine implements Serializable {
                 }
                 case '4' -> {
                     System.out.println("View My Messages");
-                    // TODO : Create a method to view messages
-                    //  viewMessages();
+                    try {
+                        String userName = "";
+                        for (Map.Entry<String, User> entry : userInfo.entrySet()) {
+                            userName = entry.getKey();
+                        }
+                        messages = archController.viewMessage(userName);
+                        if (messages.isEmpty()) {
+                            System.out.println("You have no messages");
+                            System.out.println("******************");
+                            premiumMenu();
+                        } else {
+                            for (Map.Entry<String, Message> entry : messages.entrySet()) {
+                                System.out.println("Message Receiver : " + entry.getValue().getToUser());
+                                System.out.println("Message ID : " + entry.getKey());
+                                System.out.println("Message : " + entry.getValue().getMessage());
+                                System.out.println("Message Date : " + entry.getValue().getTimeStamp());
+                                System.out.println("Message Sender : " + entry.getValue().getFromUser());
+                                System.out.println("******************");
+                            }
+                            System.out.println("You have " + messages.size() + " messages");
+                            System.out.println("******************");
+                            messages.clear();
+                            premiumMenu();
+                        }
+                    }
+                    catch(Exception e){
+                        System.out.println(e.getMessage());
+                        premiumMenu();
+                    }
                 }
                 case '5' -> {
                     System.out.println("Renew Subscription");

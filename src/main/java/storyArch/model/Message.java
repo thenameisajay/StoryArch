@@ -1,25 +1,28 @@
 package main.java.storyArch.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * This is used for storing the messages between users and any system messages.
  * It is used for the chat feature.
  */
-public class Message {
+public class Message implements Serializable {
+
+    private long MessageID;
     private String toUser;
 
     private String fromUser;
 
     private String message;
 
-    private Date date;
+    private Date timeStamp;
 
-    public Message(String toUser, String fromUser, String message, Date date) {
+    public Message(String toUser, String fromUser, String message, Date timeStamp) {
         this.toUser = toUser;
         this.fromUser = fromUser;
         this.message = message;
-        this.date = date;
+        this.timeStamp = timeStamp;
     }
 
     public String getToUser() {
@@ -46,11 +49,11 @@ public class Message {
         this.message = message;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getTimeStamp() {
+        return timeStamp;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setTimeStamp(Date timeStamp) {
+        this.timeStamp = timeStamp;
     }
 }
