@@ -26,6 +26,8 @@ public class CommandLine implements Serializable {
     private Map<String, Message> messages = new HashMap<>();
     private boolean loginStatus = false;
 
+    private boolean connectionStatus = false;
+
 
     public CommandLine(ArchController archController) {
         this.archController = archController;
@@ -42,12 +44,15 @@ public class CommandLine implements Serializable {
             InetAddress address = InetAddress.getByName("www.google.com");
             System.out.println("You are Online.");
             System.out.println("******************");
+            connectionStatus = true;
         } catch (UnknownHostException e) {
             System.out.println("You are Offline, all data will be saved locally on your device until you are online.");
             System.out.println("Connection Status: false");
+            connectionStatus = false;
         } catch (IOException e) {
             System.out.println("You are Offline, all data will be saved locally on your device until you are online.");
             System.out.println("Connection Status: false");
+            connectionStatus = false;
         }
     }
 
@@ -88,7 +93,11 @@ public class CommandLine implements Serializable {
                             System.out.println("Save Data");
                             try {
                                 archController.saveData();
-                                System.out.println("Data Saved Successfully");
+                                if (connectionStatus) {
+                                    System.out.println("Data Saved Successfully to the Server");
+                                } else {
+                                    System.out.println("Data Saved Successfully to the Local Storage and will be synced when you are online");
+                                }
                                 System.out.println("******************");
                                 start();
                             } catch (Exception e) {
@@ -100,7 +109,11 @@ public class CommandLine implements Serializable {
                             System.out.println("Load Data");
                             try {
                                 archController.loadData();
-                                System.out.println("Data Loaded Successfully");
+                                if (connectionStatus) {
+                                    System.out.println("Data Loaded Successfully from the Server");
+                                } else {
+                                    System.out.println("Data Loaded Successfully from the Local Storage");
+                                }
                                 System.out.println("******************");
                                 start();
                             } catch (Exception e) {
