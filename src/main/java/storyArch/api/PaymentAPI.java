@@ -1,5 +1,10 @@
 package main.java.storyArch.api;
 
+/**
+ * This is the API for the payment gateway
+ * This is used for the payment feature.
+ * This is used for the premium subscription feature.
+ */
 public class PaymentAPI {
     // Redirection to payment gateway
     public void redirectToPaymentGateway() {

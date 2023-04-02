@@ -12,6 +12,13 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
 
+/**
+ * This is the controller class for the StoryArch application.
+ * It is used to control the flow of data between the view and the model.
+ * It is also used to control the flow of data between the model and the API.
+ * It is used to control the flow of data between the model and the service.
+ * It is used to control the flow of data between the service and the model.
+ */
 public class ArchController implements Serializable {
     UserService userService = new UserService();
 
