@@ -410,7 +410,7 @@ public class CommandLine implements Serializable {
                 try {
                     archController.updateSubscriptionType(userName, SubscriptionType.Premium);
                     archController.updateSubscriptionDate(userName, presentDate);
-                    System.out.println("Your subscription has been renewed");
+                    archController.paymentAPI();
                     System.out.println("******************");
                     premiumMenu();
                 } catch (Exception e) {

@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Message Service is now fully functional and users can send and view messages to and forth.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/api/PublishersAPI.java" afterDir="false" />
+    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Premium Users are now able to renew their subscription from the date.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +84,7 @@
       <workItem from="1680027171395" duration="1279000" />
       <workItem from="1680075675647" duration="10000" />
       <workItem from="1680269095942" duration="95000" />
-      <workItem from="1680434975122" duration="17563000" />
+      <workItem from="1680434975122" duration="17961000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a simple user menu for the view and updating the data model for the User.">
       <created>1679998692909</created>
@@ -194,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680457892768</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Premium Users are now able to renew their subscription from the date.">
+      <created>1680459010602</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1680459010602</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +232,8 @@
     <MESSAGE value="added initialisation check for premium users :&#10;     * To check if the subscription of a premium user is still valid or not.&#10;     * If the subscription is expired, the user is downgraded to a basic user.&#10;     * If the subscription is still about to expire, the user is notified.&#10;     *&#10;     * @return - Returns true if the subscription is valid or false if the subscription is expired&#10;     &#10;     Also now able to view ACCOUNT DETAILS AND HOW MANY DAYS UNTIL SUBSCRIPTION EXPIRES." />
     <MESSAGE value="Message Service has been initialised and now able to view any messages from user or system ( only for warning purposes at the moment)." />
     <MESSAGE value="Message Service is now fully functional and users can send and view messages to and forth." />
-    <option name="LAST_COMMIT_MESSAGE" value="Message Service is now fully functional and users can send and view messages to and forth." />
+    <MESSAGE value="Premium Users are now able to renew their subscription from the date." />
+    <option name="LAST_COMMIT_MESSAGE" value="Premium Users are now able to renew their subscription from the date." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -245,18 +250,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>459</line>
+          <line>450</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>458</line>
+          <line>449</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="36" />
+          <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
+          <line>396</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
+          <line>397</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
+          <line>398</line>
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
