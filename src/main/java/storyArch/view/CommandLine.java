@@ -57,7 +57,6 @@ public class CommandLine implements Serializable {
     }
 
     public void startMessage() {
-        System.out.println("*** Story Arch ***");
         System.out.println("Please select an option:");
         System.out.println("1. Login");
         System.out.println("2. Register");
@@ -93,6 +92,7 @@ public class CommandLine implements Serializable {
                             System.out.println("Save Data");
                             try {
                                 archController.saveData();
+                                System.out.println("******************");
                                 if (connectionStatus) {
                                     System.out.println("Data Saved Successfully to the Server");
                                 } else {
@@ -109,6 +109,7 @@ public class CommandLine implements Serializable {
                             System.out.println("Load Data");
                             try {
                                 archController.loadData();
+                                System.out.println("******************");
                                 if (connectionStatus) {
                                     System.out.println("Data Loaded Successfully from the Server");
                                 } else {
@@ -141,7 +142,15 @@ public class CommandLine implements Serializable {
     }
 
     private void startLogo() {
-        //TODO: Add  - SORT OF TEXT OF STORY ARCH
+        String banner = "  ,---.   ,--.                                  ,---.               ,--.      \n" +
+                "'   .-',-'  '-. ,---. ,--.--.,--. ,--.,-----. /  O  \\ ,--.--. ,---.|  ,---.  \n" +
+                "`.  `-.'-.  .-'| .-. ||  .--' \\  '  / '-----'|  .-.  ||  .--'| .--'|  .-.  | \n" +
+                ".-'    | |  |  ' '-' '|  |     \\   '         |  | |  ||  |   \\ `--.|  | |  | \n" +
+                "`-----'  `--'   `---' `--'   .-'  /          `--' `--'`--'    `---'`--' `--' \n" +
+                "                                                                      v 1.0           \n";
+        ;
+
+        System.out.println(banner);
 
     }
 
