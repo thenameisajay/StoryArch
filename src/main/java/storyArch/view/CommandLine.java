@@ -8,10 +8,7 @@ import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 // Command Line View for Story Arch application
 public class CommandLine implements Serializable {
@@ -224,7 +221,11 @@ public class CommandLine implements Serializable {
             for (Map.Entry<String, User> entry : userInfo.entrySet()) {
                 if (entry.getKey().equalsIgnoreCase(userName)) {
                     if (entry.getValue().getSubscriptionType().equals(SubscriptionType.Premium)) {
-                        premiumMenu();
+                        if (initialiseSubscription()) {
+                            premiumMenu();
+                        } else {
+                            basicMenu();
+                        }
                     } else {
                         basicMenu();
                     }
@@ -235,6 +236,60 @@ public class CommandLine implements Serializable {
             start();
         }
 
+    }
+
+    /**
+     * To check if the subscription of a premium user is still valid or not.
+     * If the subscription is expired, the user is downgraded to a basic user.
+     * If the subscription is still about to expire, the user is notified.
+     *
+     * @return - Returns true if the subscription is valid or false if the subscription is expired
+     */
+    private boolean initialiseSubscription() {
+        //TODO: Check if the subscription is still valid
+        // To check the status of the subscription
+        // Check if subcription is expired or not if the date is over a year
+        Date date = null;
+        String userName = "";
+        boolean status = true;
+        for (Map.Entry<String, User> entry : userInfo.entrySet()) {
+            if (entry.getValue().getSubscriptionType().equals(SubscriptionType.Premium)) {
+                date = entry.getValue().getSubscriptionStartDate();
+                userName = entry.getKey();
+            }
+        }
+        if (date != null) {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            cal.add(Calendar.YEAR, 1);
+            Date dateAfterOneYear = cal.getTime();
+            if (dateAfterOneYear.before(new Date())) {
+                System.out.println("Your subscription has expired");
+                System.out.println("Please renew your subscription");
+                System.out.println("******************");
+                try {
+                    archController.updateSubscriptionType(userName, SubscriptionType.Free);
+                    System.out.println("Your subscription has been updated to Free");
+                    System.out.println("******************");
+                    status = false;
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+        // Check if subscription is about to expire and give a warning
+        if (date != null) {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            cal.add(Calendar.YEAR, 1);
+            cal.add(Calendar.MONTH, -1);
+            Date dateAfterOneYear = cal.getTime();
+            if (dateAfterOneYear.before(new Date())) {
+                //TODO : Drop a message to the user to renew the subscription from the system.
+                status = true;
+            }
+        }
+        return status;
     }
 
     private void basicMenu() {
@@ -253,9 +308,10 @@ public class CommandLine implements Serializable {
                 1. Project Menu
                 2. View My Account Details
                 3. Send a message to user
-                4.View My Messages
-                5. Delete My Account
-                6. Logout""");
+                4. View My Messages
+                5. Renew Subscription
+                6. Delete My Account
+                7. Logout""");
         System.out.println("******************");
         System.out.println("Please enter your choice: ");
         String line = scanner.nextLine().trim();
@@ -268,8 +324,7 @@ public class CommandLine implements Serializable {
                 }
                 case '2' -> {
                     System.out.println("View My Account Details");
-                    //TODO : Create a method to view account details
-                    //  viewAccountDetails();
+                    viewAccountDetails();
                 }
                 case '3' -> {
                     System.out.println("Send a message to user");
@@ -282,11 +337,15 @@ public class CommandLine implements Serializable {
                     //  viewMessages();
                 }
                 case '5' -> {
-                    System.out.println("Delete My Account");
-                    // TODO : Create a method to delete account
-                    deleteAccount();
+                    System.out.println("Renew Subscription");
+                    // TODO : Create a method to renew subscription
+                    //  renewSubscription();
                 }
                 case '6' -> {
+                    System.out.println("Delete My Account");
+                    deleteAccount();
+                }
+                case '7' -> {
                     System.out.println("Logging out !");
                     System.out.println("******************");
                     logout();
@@ -296,6 +355,37 @@ public class CommandLine implements Serializable {
         } else {
             System.out.println("Please enter a valid option");
             premiumMenu();
+        }
+    }
+
+    /**
+     * To view the account details of the user
+     * and shows the number of days left for the subscription to expire
+     */
+    private void viewAccountDetails() {
+        Date date = null;
+        for (Map.Entry<String, User> entry : userInfo.entrySet()) {
+            date = entry.getValue().getSubscriptionStartDate();
+            System.out.println("******************");
+            System.out.println("User Name: " + entry.getKey());
+            System.out.println("Full Name: " + entry.getValue().getFullName());
+            System.out.println("Email: " + entry.getValue().getEmail());
+            System.out.println("Subscription Type: " + entry.getValue().getSubscriptionType());
+            System.out.println("Subscription Date: " + date);
+            System.out.println("******************");
+        }
+        // Check how many days until subscription (lasts for a year) expires  and print the message
+        if (date != null) {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            cal.add(Calendar.YEAR, 1);
+            Date dateAfterOneYear = cal.getTime();
+            if (dateAfterOneYear.before(new Date())) {
+                // This (if-methid is left blank) as it will never take place as there is a check in the initialiseSubscription method
+            } else {
+                System.out.println("Your subscription will expire in " + (dateAfterOneYear.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24) + " days");
+                System.out.println("******************");
+            }
         }
     }
 

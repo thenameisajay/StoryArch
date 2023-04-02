@@ -38,4 +38,8 @@ public class ArchController implements Serializable {
     public void deleteAccount(String userName) {
         userService.deleteAccount(userName);
     }
+
+    public void updateSubscriptionType(String userName, SubscriptionType subscriptionType) {
+        userService.updateSubscriptionType(userName, subscriptionType);
+    }
 }

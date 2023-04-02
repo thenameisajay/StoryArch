@@ -117,4 +117,17 @@ public class UserService implements Serializable {
             throw new IllegalArgumentException("Username does not exist");
         }
     }
+
+    public void updateSubscriptionType(String userName, SubscriptionType subscriptionType) {
+        // First Check : If userdata is empty
+        if (user.isEmpty()) {
+            throw new IllegalArgumentException("No users registered");
+        }
+        // Second Check
+        if (user.containsKey(userName)) {
+            user.get(userName).setSubscriptionType(subscriptionType);
+        } else {
+            throw new IllegalArgumentException("Username does not exist");
+        }
+    }
 }
