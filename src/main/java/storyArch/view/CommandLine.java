@@ -25,6 +25,8 @@ public class CommandLine implements Serializable {
     private Map<String, Message> messages = new HashMap<>();
 
     private Map<Integer, Project> projects = new HashMap<>();
+
+    private Map<Integer,Project> sharedProjects = new HashMap<>();
     private boolean loginStatus = false;
 
     private boolean connectionStatus = false;
@@ -37,6 +39,7 @@ public class CommandLine implements Serializable {
     public void main() {
         System.out.println("Hello User!");
         checkConnection();
+        loadData();
         start();
     }
 
@@ -58,8 +61,7 @@ public class CommandLine implements Serializable {
         System.out.println("1. Login");
         System.out.println("2. Register");
         System.out.println("3.Save Data");
-        System.out.println("4.Load Data");
-        System.out.println("5. Exit");
+        System.out.println("4. Exit");
         System.out.println("Enter your choice: ");
         System.out.println("******************");
 
@@ -87,40 +89,9 @@ public class CommandLine implements Serializable {
 
                         }
                         case '3' -> {
-                            System.out.println("Save Data");
-                            try {
-                                archController.saveData();
-                                System.out.println("******************");
-                                if (connectionStatus) {
-                                    System.out.println("Data Saved Successfully to the Server");
-                                } else {
-                                    System.out.println("Data Saved Successfully to the Local Storage and will be synced when you are online");
-                                }
-                                System.out.println("******************");
-                                start();
-                            } catch (Exception e) {
-                                System.out.println(e.getMessage());
-                                start();
-                            }
+                            saveData();
                         }
                         case '4' -> {
-                            System.out.println("Load Data");
-                            try {
-                                archController.loadData();
-                                System.out.println("******************");
-                                if (connectionStatus) {
-                                    System.out.println("Data Loaded Successfully from the Server");
-                                } else {
-                                    System.out.println("Data Loaded Successfully from the Local Storage");
-                                }
-                                System.out.println("******************");
-                                start();
-                            } catch (Exception e) {
-                                System.out.println(e.getMessage());
-                                start();
-                            }
-                        }
-                        case '5' -> {
                             System.out.println("Exit");
                             exit();
                         }
@@ -133,6 +104,42 @@ public class CommandLine implements Serializable {
                 }
 
             } while (line.charAt(0) != '6' || line.length() != 1);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            start();
+        }
+    }
+
+    private void saveData() {
+        System.out.println("Save Data");
+        try {
+            archController.saveData();
+            System.out.println("******************");
+            if (connectionStatus) {
+                System.out.println("Data Saved Successfully to the Server");
+            } else {
+                System.out.println("Data Saved Successfully to the Local Storage and will be synced when you are online");
+            }
+            System.out.println("******************");
+            start();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            start();
+        }
+    }
+
+    private void loadData() {
+        System.out.println("Load Data");
+        try {
+            archController.loadData();
+            System.out.println("******************");
+            if (connectionStatus) {
+                System.out.println("Data Loaded Successfully from the Server");
+            } else {
+                System.out.println("Data Loaded Successfully from the Local Storage");
+            }
+            System.out.println("******************");
+            start();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             start();
@@ -397,6 +404,9 @@ public class CommandLine implements Serializable {
                     logout();
                     loginStatus = false;
                     userInfo.clear();
+                    projects.clear();
+                    messages.clear();
+                    sharedProjects.clear();
                 }
                 default -> System.out.println("Please enter a valid option");
             }
@@ -710,12 +720,11 @@ public class CommandLine implements Serializable {
                     // openProject();
                 }
                 case '3' -> {
-                    //TODO : View all projects
-                    // viewAllProjects();
+                    viewMyProjects();
                 }
                 case '4' -> {
                     //TODO : Delete a project
-                    //  deleteProject();
+                   deleteProject();
                 }
                 case '5' -> {
                     if (userInfo.entrySet().iterator().next().getValue().getSubscriptionType().equals(SubscriptionType.Premium)) {
@@ -737,6 +746,25 @@ public class CommandLine implements Serializable {
         }
     }
 
+    private void deleteProject() {
+        System.out.println("******************");
+        System.out.println("Delete a Project");
+        System.out.println("******************");
+        System.out.println("Please enter the ID of the project you want to delete: ");
+        String projectID = scanner.nextLine().trim();
+        try {
+            archController.deleteProject(projectID);
+            System.out.println("Project deleted successfully");
+            System.out.println("******************");
+            projectMenu();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("******************");
+            projectMenu();
+        }
+
+    }
+
     private void createProject() {
         List<String> teamMembers = new ArrayList<>();
         System.out.println("******************");
@@ -751,7 +779,7 @@ public class CommandLine implements Serializable {
         System.out.println("Do you want to make use of External Illustration Services? (Y/N)");
         // Add enum choice for external illustration services
         String choice = scanner.nextLine().trim();
-        choice.toLowerCase();
+         choice =  choice.toLowerCase();
         if (choice.length() == 1) {
             switch (choice.charAt(0)) {
                 case ('y') -> {
@@ -778,7 +806,7 @@ public class CommandLine implements Serializable {
             System.out.println("With Premium Subscription, you can add team members to your project");
             System.out.println("Do you want to add team members to your project? (Y/N)");
             String line = scanner.nextLine().trim();
-            line.toLowerCase();
+            line = line.toLowerCase();
             if (line.length() == 1) {
                 switch (line.charAt(0)) {
                     case ('y') -> {
@@ -857,13 +885,57 @@ public class CommandLine implements Serializable {
 
     }
 
-    private void viewAllProjects() {
+
+
+   // MUST ALSO CHECK IN THE TEAM MEMBERS IF THEY HAVE A PREMIUM SUBSCRIPTION...
+    private void viewMyProjects() {
         System.out.println("******************");
         System.out.println("Viewing All Projects");
         System.out.println("******************");
         String userName = userInfo.entrySet().iterator().next().getKey();
+        projects = archController.getProjectByCreator(userName);
+        //TODO : VIEW ALSO THE SHARED PROJECTS
+        sharedProjects = archController.getSharedProjects(userName);
+if (projects.size() == 0 && sharedProjects.size() == 0){
+            System.out.println("You have not created any projects yet");
+            System.out.println("******************");
+            projectMenu();
+        } else {
+    // TEST: THE FUNCTION...
 
-
+    // TODO : REFINE THE CODE... IF ANY MAP IS ZERO THEN DONT PRINT THE MAP...
+    if (projects.size() != 0) {
+        for (Map.Entry<Integer, Project> entry : projects.entrySet()) {
+            System.out.println("*****************************");
+            System.out.println("Project ID: " + entry.getKey());
+            System.out.println("Project Name: " + entry.getValue().getProjectName());
+            System.out.println("Project Description: " + entry.getValue().getProjectDescription());
+            System.out.println("Project Creator: " + entry.getValue().getCreator());
+            System.out.println("Project Creation Date: " + entry.getValue().getDate());
+            System.out.println("Is External Illustrations enabled:  " + entry.getValue().getIllustrationServices());
+            System.out.println("Project Team Members: " + entry.getValue().getTeamMembers());
+            System.out.println("*****************************");
+        }
     }
+    if (sharedProjects.size() != 0) {
+        for (Map.Entry<Integer, Project> entry : sharedProjects.entrySet()) {
+            System.out.println("*****************************");
+            System.out.println("Project ID: " + entry.getKey());
+            System.out.println("Project Name: " + entry.getValue().getProjectName());
+            System.out.println("Project Description: " + entry.getValue().getProjectDescription());
+            System.out.println("Project Creator: " + entry.getValue().getCreator());
+            System.out.println("Project Creation Date: " + entry.getValue().getDate());
+            System.out.println("Is External Illustrations enabled:  " + entry.getValue().getIllustrationServices());
+            System.out.println("Project Team Members: " + entry.getValue().getTeamMembers());
+            System.out.println("*****************************");
+        }
+    }
+}
+        projectMenu();
+    }
+
+
+
+
 
 }

@@ -94,4 +94,12 @@ public class ArchController implements Serializable {
     public Map<Integer, Project> getProjectByCreator(String creator) {
         return projectService.getProjectByCreator(creator);
     }
+
+    public Map<Integer, Project> getSharedProjects(String userName) {
+        return projectService.getSharedProjects(userName);
+    }
+
+    public void deleteProject(String projectID) {
+        projectService.deleteProject(projectID);
+    }
 }

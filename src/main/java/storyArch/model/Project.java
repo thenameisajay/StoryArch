@@ -1,12 +1,13 @@
 package main.java.storyArch.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 /**
  * This is the main class for the project. It contains all the information about a project.
  */
-public class Project {
+public class Project implements Serializable {
     private int projectID;
     private String projectName;
     private String projectDescription;

@@ -6,7 +6,7 @@ import main.java.storyArch.model.Project;
 import java.io.*;
 import java.util.*;
 
-public class ProjectService {
+public class ProjectService implements Serializable {
 
     MessageService messageService = new MessageService();
     private Map<Integer, Project> projects = new HashMap<>();
@@ -25,13 +25,22 @@ public class ProjectService {
     }
 
     public void createProject(String projectName, String projectDescription, String creator, Date date, IllustrationServices illustrationServices, List<String> teamMembers) {
+        // first check for null values and throw an exception if any of the values are null.
+        if (projectName == null || projectDescription == null || creator == null || date == null || illustrationServices == null) {
+            throw new IllegalArgumentException("One or more of the values are null");
+        }
+        // Check if the project name already exists in the database.
+        for (Project project : projects.values()) {
+            if (project.getProjectName().equals(projectName.toLowerCase())) {
+                throw new IllegalArgumentException("Project name already exists ! Create a new project name.");
+            }
+        }
         // If List is of team members , dissect the list and send a message to the team members that they have been added to the project.
         if (teamMembers != null) {
             // Send a message to the team members that they have been added to the project.
             for (String member : teamMembers) {
-                messageService.sendMessage(member.toLowerCase(), "System", "You have been added to the project by " + creator.toLowerCase() + "to: " + projectName, date);
+                messageService.sendMessage(member.toLowerCase(), "System", "You have been added to the project by " + creator.toLowerCase() + " to: " + projectName, date);
             }
-
         }
         // Create a random Project ID using numeric values of 7 digits
         int projectID = (int) (Math.random() * 10000000);
@@ -40,7 +49,7 @@ public class ProjectService {
             projectID = (int) (Math.random() * 10000000);
         }
         // Add the project to the database.
-        projects.put(projectID, new Project(projectID, projectName, projectDescription, creator, date, illustrationServices, teamMembers));
+        projects.put(projectID, new Project(projectID, projectName.toLowerCase(), projectDescription, creator.toLowerCase(), date, illustrationServices, teamMembers));
     }
     public void saveData() throws IOException {
         FileOutputStream f = new FileOutputStream("src/resources/projectData.ser");
@@ -70,5 +79,27 @@ public class ProjectService {
     }
 
 
+    public Map<Integer, Project> getSharedProjects(String userName) {
+        Map<Integer, Project> sharedProjects = new HashMap<>();
+        for (Project project : projects.values()) {
+            if (project.getTeamMembers() != null) {
+                if (project.getTeamMembers().contains(userName.toLowerCase())) {
+                    sharedProjects.put(project.getProjectID(), project);
+                }
+            }
+        }
+        return sharedProjects;
+    }
+
+    public void deleteProject(String projectID) {
+        // First check for null values
+        if (projectID == null || projectID.isEmpty())
+            throw new IllegalArgumentException("Project ID cannot be empty");
+        // Check if the project exists in the database
+        if (!projects.containsKey(Integer.parseInt(projectID)))
+            throw new IllegalArgumentException("Project does not exist");
+        else
+        projects.remove(Integer.parseInt(projectID));
+    }
 }
 
