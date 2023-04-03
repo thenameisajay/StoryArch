@@ -99,7 +99,7 @@ public class ArchController implements Serializable {
         return projectService.getSharedProjects(userName);
     }
 
-    public void deleteProject(String projectID) {
-        projectService.deleteProject(projectID);
+    public void deleteProject(String projectID, String creator) {
+        projectService.deleteProject(projectID, creator);
     }
 }

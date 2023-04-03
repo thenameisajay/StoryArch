@@ -753,8 +753,9 @@ public class CommandLine implements Serializable {
         System.out.println("******************");
         System.out.println("Please enter the ID of the project you want to delete: ");
         String projectID = scanner.nextLine().trim();
+        String creator = userInfo.entrySet().iterator().next().getKey();
         try {
-            archController.deleteProject(projectID);
+            archController.deleteProject(projectID, creator);
             System.out.println("Project deleted successfully");
             System.out.println("******************");
             projectMenu();
@@ -816,7 +817,7 @@ public class CommandLine implements Serializable {
                         String teamMember = scanner.nextLine().trim();
                         String[] teamMemberArray = teamMember.split(",");
                         for (String s : teamMemberArray) {
-                            teamMembers.add(s);
+                            teamMembers.add(s.toLowerCase());
                         }
                         System.out.println("Team members added successfully");
                         try {
@@ -902,17 +903,14 @@ public class CommandLine implements Serializable {
         System.out.println("******************");
         String userName = userInfo.entrySet().iterator().next().getKey();
         projects = archController.getProjectByCreator(userName);
-        //TODO : VIEW ALSO THE SHARED PROJECTS
         sharedProjects = archController.getSharedProjects(userName);
 if (projects.size() == 0 && sharedProjects.size() == 0){
             System.out.println("You have not created any projects yet");
             System.out.println("******************");
             projectMenu();
         } else {
-    // TEST: THE FUNCTION...
-
-    // TODO : REFINE THE CODE... IF ANY MAP IS ZERO THEN DONT PRINT THE MAP...
     if (projects.size() != 0) {
+        System.out.println("Your Own Projects : ");
         for (Map.Entry<Integer, Project> entry : projects.entrySet()) {
             System.out.println("*****************************");
             System.out.println("Project ID: " + entry.getKey());
@@ -926,6 +924,7 @@ if (projects.size() == 0 && sharedProjects.size() == 0){
         }
     }
     if (sharedProjects.size() != 0) {
+        System.out.println("Shared Projects by others : ");
         for (Map.Entry<Integer, Project> entry : sharedProjects.entrySet()) {
             System.out.println("*****************************");
             System.out.println("Project ID: " + entry.getKey());

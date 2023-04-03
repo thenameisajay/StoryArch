@@ -33,10 +33,17 @@ public class ProjectService implements Serializable {
         }
         // Check if the project name already exists in the database.
         for (Project project : projects.values()) {
-            if (project.getProjectName().equals(projectName.toLowerCase())) {
+            if (project.getProjectName().equals(projectName.toLowerCase()) || project.getCreator().equals(creator.toLowerCase())) {
                 throw new IllegalArgumentException("Project name already exists ! Create a new project name.");
             }
         }
+        // Check if team members are  not creator
+        if (teamMembers != null) {
+            if (teamMembers.contains(creator.toLowerCase())) {
+                throw new IllegalArgumentException("You cannot add yourself as a team member");
+            }
+        }
+
         // Create a random Project ID using numeric values of 7 digits
         int projectID = (int) (Math.random() * 10000000);
         projectIDS.add(projectID);
@@ -86,15 +93,22 @@ public class ProjectService implements Serializable {
         return sharedProjects;
     }
 
-    public void deleteProject(String projectID) {
+    public void deleteProject(String projectID, String creator) {
         // First check for null values
         if (projectID == null || projectID.isEmpty())
             throw new IllegalArgumentException("Project ID cannot be empty");
         // Check if the project exists in the database
         if (!projects.containsKey(Integer.parseInt(projectID)))
             throw new IllegalArgumentException("Project does not exist");
-        else
-        projects.remove(Integer.parseInt(projectID));
+        else {
+            // Check if the user is the creator of the project
+            if (projects.get(Integer.parseInt(projectID)).getCreator().equals(creator.toLowerCase())) {
+                projects.remove(Integer.parseInt(projectID));
+            } else {
+                throw new IllegalArgumentException("You are not the creator of this project");
+            }
+        }
+
     }
 }
 
