@@ -110,5 +110,25 @@ public class ProjectService implements Serializable {
         }
 
     }
+
+    public Map<Integer, Project> openProject(String projectID, String creator) {
+        Map<Integer, Project> project = new HashMap<>();
+        // First check for null values
+        if (projectID == null || projectID.isEmpty())
+            throw new IllegalArgumentException("Project ID cannot be empty");
+        // Check if the project exists in the database
+        if (!projects.containsKey(Integer.parseInt(projectID)))
+            throw new IllegalArgumentException("Project does not exist");
+        else {
+            // Check if the user is the creator of the project or a team member
+            if (projects.get(Integer.parseInt(projectID)).getCreator().equals(creator.toLowerCase()) || projects.get(Integer.parseInt(projectID)).getTeamMembers().contains(creator.toLowerCase())) {
+                project.put(Integer.parseInt(projectID), projects.get(Integer.parseInt(projectID)));
+
+            } else {
+                throw new IllegalArgumentException("You do not have access to this project");
+            }
+        }
+        return project;
+    }
 }
 

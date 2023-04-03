@@ -5,6 +5,7 @@ import main.java.storyArch.api.PaymentAPI;
 import main.java.storyArch.model.*;
 import main.java.storyArch.service.MessageService;
 import main.java.storyArch.service.ProjectService;
+import main.java.storyArch.service.StoryBoardService;
 import main.java.storyArch.service.UserService;
 
 import java.io.IOException;
@@ -31,6 +32,8 @@ public class ArchController implements Serializable {
 
     IllustrationServicesAPI illustrationServicesAPI = new IllustrationServicesAPI();
 
+    StoryBoardService storyBoardService = new StoryBoardService();
+
     public void register(String fullName, String email, String userName, String password, SubscriptionType subscriptionType, Date subscriptionDate) {
         userService.register(fullName, email, userName, password, subscriptionType, subscriptionDate);
     }
@@ -39,12 +42,14 @@ public class ArchController implements Serializable {
         userService.saveData();
         messageService.saveData();
         projectService.saveData();
+        storyBoardService.saveData();
     }
 
     public void loadData() throws IOException, ClassNotFoundException {
         userService.loadData();
         messageService.loadData();
         projectService.loadData();
+        storyBoardService.loadData();
     }
 
     public void paymentAPI() {
@@ -101,5 +106,21 @@ public class ArchController implements Serializable {
 
     public void deleteProject(String projectID, String creator) {
         projectService.deleteProject(projectID, creator);
+    }
+
+    public Map<Integer, Project> openProject(String projectID, String creator) {
+        return projectService.openProject(projectID, creator);
+    }
+
+    public void addStoryboard(String projectID, String projectName, String storyboardName, String storyboardDescription, Date date, String creator) {
+        storyBoardService.addStoryboard(projectID, projectName, storyboardName, storyboardDescription, date, creator);
+    }
+
+    public Map<Integer, StoryBoard> viewStoryboardsByAll() {
+        return storyBoardService.viewStoryboardsByDate();
+    }
+
+    public void deleteStoryboard(String storyboardID, String userName) {
+        storyBoardService.deleteStoryboard(storyboardID, userName);
     }
 }

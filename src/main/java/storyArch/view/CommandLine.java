@@ -26,7 +26,11 @@ public class CommandLine implements Serializable {
 
     private Map<Integer, Project> projects = new HashMap<>();
 
-    private Map<Integer,Project> sharedProjects = new HashMap<>();
+    private Map<Integer, Project> privateProject = new HashMap<>();
+
+    private Map<Integer, Project> sharedProjects = new HashMap<>();
+
+    private Map<Integer, StoryBoard> storyBoard = new HashMap<>();
     private boolean loginStatus = false;
 
     private boolean connectionStatus = false;
@@ -148,6 +152,7 @@ public class CommandLine implements Serializable {
     }
 
     private void startLogo() {
+        System.out.println("******************");
         String banner = """
                      _______.___________.  ______   .______     ____    ____         ___      .______        ______  __    __ \s
                     /       |           | /  __  \\  |   _  \\    \\   \\  /   /        /   \\     |   _  \\      /      ||  |  |  |\s
@@ -229,6 +234,7 @@ public class CommandLine implements Serializable {
 
     /**
      * Hashes the password using SHA-256
+     *
      * @param password - Password to be hashed
      * @return - Hashed password
      */
@@ -358,7 +364,7 @@ public class CommandLine implements Serializable {
             switch (line.charAt(0)) {
                 case '1' -> {
                     System.out.println("Project Menu");
-                    //TODO : Create a project menu as per the requirements
+
                     projectMenu();
                 }
                 case '2' -> {
@@ -443,7 +449,7 @@ public class CommandLine implements Serializable {
                         basicMenu();
                     }
                 }
-                case 'N'|'n' -> {
+                case 'N' | 'n' -> {
                     System.out.println("Not upgrading to Premium");
                     System.out.println("******************");
                     basicMenu();
@@ -451,7 +457,7 @@ public class CommandLine implements Serializable {
                 default -> System.out.println("Please enter a valid option");
 
             }
-        }else {
+        } else {
             System.out.println("Please enter a valid option");
             upgradeToPremium();
         }
@@ -489,7 +495,6 @@ public class CommandLine implements Serializable {
             switch (line.charAt(0)) {
                 case '1' -> {
 
-                    //TODO : Create a project menu as per the requirements
                     projectMenu();
                 }
                 case '2' -> {
@@ -698,7 +703,7 @@ public class CommandLine implements Serializable {
     }
 
     private void projectMenu() {
-        //TODO : Create a project menu as per the requirements , add a check for basic menu if the user is a basic user only able to create 10 projects.
+
         System.out.println("******************");
         System.out.println("Welcome to the Project Menu");
         System.out.println("******************");
@@ -717,15 +722,13 @@ public class CommandLine implements Serializable {
                     createProject();
                 }
                 case '2' -> {
-                    //TODO : Open a project
-                    // openProject();
+                    openProject();
                 }
                 case '3' -> {
                     viewMyProjects();
                 }
                 case '4' -> {
-                    //TODO : Delete a project
-                   deleteProject();
+                    deleteProject();
                 }
                 case '5' -> {
                     if (userInfo.entrySet().iterator().next().getValue().getSubscriptionType().equals(SubscriptionType.Premium)) {
@@ -742,6 +745,26 @@ public class CommandLine implements Serializable {
             }
         } else {
             System.out.println("Please enter a valid option");
+            System.out.println("******************");
+            projectMenu();
+        }
+    }
+
+    //TODO: OPEN A PROJECT AND ACCESS THE STORYBOARD , Its settings and also leave the project.
+    private void openProject() {
+        System.out.println("******************");
+        System.out.println("Open a Project");
+        System.out.println("******************");
+        System.out.println("Please enter the ID of the project you want to open: ");
+        String projectID = scanner.nextLine().trim();
+        String userName = userInfo.entrySet().iterator().next().getKey();
+        try {
+            privateProject = archController.openProject(projectID, userName);
+            System.out.println("Project opened successfully");
+            System.out.println("******************");
+            insideProjectMenu();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
             System.out.println("******************");
             projectMenu();
         }
@@ -781,7 +804,7 @@ public class CommandLine implements Serializable {
         System.out.println("Do you want to make use of External Illustration Services? (Y/N)");
         // Add enum choice for external illustration services
         String choice = scanner.nextLine().trim();
-         choice =  choice.toLowerCase();
+        choice = choice.toLowerCase();
         if (choice.length() == 1) {
             switch (choice.charAt(0)) {
                 case ('y') -> {
@@ -796,13 +819,13 @@ public class CommandLine implements Serializable {
                 default -> {
                     System.out.println("Please enter a valid option");
                     System.out.println("******************");
-                    createProject();
+                    projectMenu();
                 }
             }
         } else {
             System.out.println("Please enter a valid option");
             System.out.println("******************");
-            createProject();
+            projectMenu();
         }
         if (userInfo.entrySet().iterator().next().getValue().getSubscriptionType().equals(SubscriptionType.Premium)) {
             System.out.println("With Premium Subscription, you can add team members to your project");
@@ -867,10 +890,10 @@ public class CommandLine implements Serializable {
             System.out.println("With Basic Subscription, Team collaboration is not available.");
             if (projects.size() < 10) {
                 System.out.println("You can create a maximum of 10 projects.");
-                if(projects.size() == 0)
+                if (projects.size() == 0)
                     System.out.println("You can create 10 projects.");
-                else if(projects.size() >= 1)
-                    System.out.println("You can create "+ (10 - projects.size()) + " more project.");
+                else if (projects.size() >= 1)
+                    System.out.println("You can create " + (10 - projects.size()) + " more project.");
                 try {
                     // Empty list
                     archController.createProject(projectName, projectDescription, creator, date, illustrationServices, teamMembers);
@@ -895,8 +918,6 @@ public class CommandLine implements Serializable {
     }
 
 
-
-   // MUST ALSO CHECK IN THE TEAM MEMBERS IF THEY HAVE A PREMIUM SUBSCRIPTION...
     private void viewMyProjects() {
         System.out.println("******************");
         System.out.println("Viewing All Projects");
@@ -904,46 +925,201 @@ public class CommandLine implements Serializable {
         String userName = userInfo.entrySet().iterator().next().getKey();
         projects = archController.getProjectByCreator(userName);
         sharedProjects = archController.getSharedProjects(userName);
-if (projects.size() == 0 && sharedProjects.size() == 0){
+        if (projects.size() == 0 && sharedProjects.size() == 0) {
             System.out.println("You have not created any projects yet");
             System.out.println("******************");
             projectMenu();
         } else {
-    if (projects.size() != 0) {
-        System.out.println("Your Own Projects : ");
-        for (Map.Entry<Integer, Project> entry : projects.entrySet()) {
-            System.out.println("*****************************");
-            System.out.println("Project ID: " + entry.getKey());
-            System.out.println("Project Name: " + entry.getValue().getProjectName());
-            System.out.println("Project Description: " + entry.getValue().getProjectDescription());
-            System.out.println("Project Creator: " + entry.getValue().getCreator());
-            System.out.println("Project Creation Date: " + entry.getValue().getDate());
-            System.out.println("Is External Illustrations enabled:  " + entry.getValue().getIllustrationServices());
-            System.out.println("Project Team Members: " + entry.getValue().getTeamMembers());
-            System.out.println("*****************************");
+            if (projects.size() != 0) {
+                System.out.println("Your Own Projects : ");
+                for (Map.Entry<Integer, Project> entry : projects.entrySet()) {
+                    System.out.println("*****************************");
+                    System.out.println("Project ID: " + entry.getKey());
+                    System.out.println("Project Name: " + entry.getValue().getProjectName());
+                    System.out.println("Project Description: " + entry.getValue().getProjectDescription());
+                    System.out.println("Project Creator: " + entry.getValue().getCreator());
+                    System.out.println("Project Creation Date: " + entry.getValue().getDate());
+                    System.out.println("Is External Illustrations enabled:  " + entry.getValue().getIllustrationServices());
+                    System.out.println("Project Team Members: " + entry.getValue().getTeamMembers());
+                    System.out.println("*****************************");
+                }
+            }
+            if (sharedProjects.size() != 0) {
+                System.out.println("Shared Projects by others : ");
+                for (Map.Entry<Integer, Project> entry : sharedProjects.entrySet()) {
+                    System.out.println("*****************************");
+                    System.out.println("Project ID: " + entry.getKey());
+                    System.out.println("Project Name: " + entry.getValue().getProjectName());
+                    System.out.println("Project Description: " + entry.getValue().getProjectDescription());
+                    System.out.println("Project Creator: " + entry.getValue().getCreator());
+                    System.out.println("Project Creation Date: " + entry.getValue().getDate());
+                    System.out.println("Is External Illustrations enabled:  " + entry.getValue().getIllustrationServices());
+                    System.out.println("Project Team Members: " + entry.getValue().getTeamMembers());
+                    System.out.println("*****************************");
+                }
+            }
         }
-    }
-    if (sharedProjects.size() != 0) {
-        System.out.println("Shared Projects by others : ");
-        for (Map.Entry<Integer, Project> entry : sharedProjects.entrySet()) {
-            System.out.println("*****************************");
-            System.out.println("Project ID: " + entry.getKey());
-            System.out.println("Project Name: " + entry.getValue().getProjectName());
-            System.out.println("Project Description: " + entry.getValue().getProjectDescription());
-            System.out.println("Project Creator: " + entry.getValue().getCreator());
-            System.out.println("Project Creation Date: " + entry.getValue().getDate());
-            System.out.println("Is External Illustrations enabled:  " + entry.getValue().getIllustrationServices());
-            System.out.println("Project Team Members: " + entry.getValue().getTeamMembers());
-            System.out.println("*****************************");
-        }
-    }
-}
         projects.clear();
         projectMenu();
     }
 
+    private void insideProjectMenu() {
+        String projectName = "";
+        System.out.println("******************");
+        for (Map.Entry<Integer, Project> entry : privateProject.entrySet()) {
+            projectName = entry.getValue().getProjectName();
+        }
+        System.out.println(" " + projectName + "");
+        System.out.println("******************");
+        System.out.println("1. Add a Storyboard");
+        System.out.println("2. Open a Storyboard");
+        System.out.println("3. View Project Details");
+        System.out.println("4. View Storyboards");
+        System.out.println("5. Delete a Storyboard");
+        System.out.println("6. Back to Project Menu");
+        System.out.println("******************");
+        System.out.println("Please enter an option");
+        String option = scanner.nextLine();
+        if (option.length() == 1) {
+            switch (option.charAt(0)) {
+                case '1' -> {
+                    addStoryboard();
+                }
+                case '2' -> {
+                    //TODO: Open a storyboard
+                    //  openStoryboard();
+                }
+                case '3' -> {
+                    viewProjectDetails();
+                }
+                case '4' -> {
+                    viewStoryboards();
+                }
+                case '5' -> {
+                    deleteStoryboard();
+                }
+                case '6' -> {
+                    projectMenu();
+                }
+            }
+        } else {
+            System.out.println("Please enter a valid option");
+            System.out.println("******************");
+            insideProjectMenu();
+        }
+    }
+
+    private void deleteStoryboard() {
+        System.out.println("******************");
+        System.out.println("Deleting a Storyboard");
+        System.out.println("******************");
+        System.out.println("Please enter the storyboard ID");
+        String storyboardID = scanner.nextLine();
+        String userName = userInfo.entrySet().iterator().next().getKey();
+        try {
+            archController.deleteStoryboard(storyboardID, userName);
+            System.out.println("Storyboard deleted successfully");
+            insideProjectMenu();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            insideProjectMenu();
+        }
+    }
+
+    private void addStoryboard() {
+        String projectID = "";
+        String projectName = "";
+        String creator = userInfo.entrySet().iterator().next().getKey();
+        Date date = new Date();
+        System.out.println("******************");
+        System.out.println("Adding a Storyboard");
+        System.out.println("******************");
+        System.out.println("Please enter the storyboard name");
+        String storyboardName = scanner.nextLine();
+        System.out.println("Please enter the storyboard description");
+        String storyboardDescription = scanner.nextLine();
+        for (Map.Entry<Integer, Project> entry : privateProject.entrySet()) {
+            projectID = String.valueOf(entry.getKey());
+            projectName = entry.getValue().getProjectName();
+        }
+        try {
+            archController.addStoryboard(projectID, projectName, storyboardName, storyboardDescription, date, creator);
+            System.out.println("Storyboard added successfully");
+            insideProjectMenu();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            insideProjectMenu();
+        }
+    }
 
 
+    private void viewStoryboards() {
+        System.out.println("******************");
+        System.out.println("Viewing Storyboards");
+        System.out.println("******************");
+        System.out.println("******************");
+        System.out.println("1. View Storyboards");
+        System.out.println("2. Back to Project Menu");
+        System.out.println("******************");
+        System.out.println("Please enter an option");
+        String option = scanner.nextLine();
+        if (option.length() == 1) {
+            switch (option.charAt(0)) {
 
+                case '1' -> {
+                    viewStoryboardsAll();
+                }
+                case '2' -> {
+                    insideProjectMenu();
+                }
+            }
+        } else {
+            System.out.println("Please enter a valid option");
+            System.out.println("******************");
+            viewStoryboards();
+        }
+    }
 
+    private void viewStoryboardsAll() {
+        System.out.println("******************");
+        System.out.println("Viewing All Storyboards inside the Project");
+        System.out.println("******************");
+        try {
+            storyBoard = archController.viewStoryboardsByAll();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            viewStoryboards();
+        }
+        if (storyBoard.isEmpty()) {
+            System.out.println("No Storyboards found");
+            viewStoryboards();
+        }
+        for (Map.Entry<Integer, StoryBoard> entry : storyBoard.entrySet()) {
+            System.out.println("Storyboard ID: " + entry.getKey());
+            System.out.println("Storyboard Name: " + entry.getValue().getStoryName());
+            System.out.println("Storyboard Description: " + entry.getValue().getStoryDescription());
+            System.out.println("Storyboard Creation Date: " + entry.getValue().getCreationDate());
+            System.out.println("Storyboard Creator: " + entry.getValue().getCreator());
+            System.out.println("*****************************");
+        }
+        insideProjectMenu();
+    }
+
+    private void viewProjectDetails() {
+        System.out.println("******************");
+        System.out.println("Viewing Project Details");
+        System.out.println("******************");
+        for (Map.Entry<Integer, Project> entry : privateProject.entrySet()) {
+            System.out.println("Project ID: " + entry.getKey());
+            System.out.println("Project Name: " + entry.getValue().getProjectName());
+            System.out.println("Project Description: " + entry.getValue().getProjectDescription());
+            System.out.println("Project Creator: " + entry.getValue().getCreator());
+            System.out.println("Project Creation Date: " + entry.getValue().getDate());
+            System.out.println("Is External Illustrations enabled:  " + entry.getValue().getIllustrationServices());
+            System.out.println("Project Team Members: " + entry.getValue().getTeamMembers());
+            System.out.println("*****************************");
+        }
+        System.out.println("******************");
+        insideProjectMenu();
+    }
 }

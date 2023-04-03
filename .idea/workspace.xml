@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Bug Fix : Message Service for team collab is now up and running.&#10;&#10;Cause : A service layer talking to another service layer is never a good idea. There were two instances of the same - map.&#10;&#10;Remedy : Rather than call a service to speak to another. Using the view to send message to the team-member after the project has been successfully created.">
+    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Fixed : Minor Bugs where creator can assign himself as a team-member (not in this system).">
+      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/StoryBoard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/StoryBoardService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/ProjectService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/projectData.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/projectData.ser" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +95,7 @@
       <workItem from="1680027171395" duration="1279000" />
       <workItem from="1680075675647" duration="10000" />
       <workItem from="1680269095942" duration="95000" />
-      <workItem from="1680434975122" duration="43368000" />
+      <workItem from="1680434975122" duration="47469000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a simple user menu for the view and updating the data model for the User.">
       <created>1679998692909</created>
@@ -327,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680546048810</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Fixed : Minor Bugs where creator can assign himself as a team-member (not in this system).">
+      <created>1680547335098</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1680547335098</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,7 +353,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="writing the view Class for StoryArch." />
     <MESSAGE value="Reconfigured the entire system , with base model reconfiguration, now able to register as user (basic or premium)." />
     <MESSAGE value="Now successfully able to log-in to the system using sha-256 authentication and based on the subscription type , the respective menu is shown." />
     <MESSAGE value="premium menu is up and running , some of the menu options such as delete my account and log out works." />
@@ -370,29 +377,30 @@
     <MESSAGE value="Projects are now viewable by team-members and anyone can delete a project using Project-ID (only creator should have the privilege).&#10;&#10;ISSUE : Bug exists in the message service , for some reason the storage is getting wiped after saving the message." />
     <MESSAGE value="now data is loaded by default. renamed cache map in view to differentiate between storage in service layer.&#10;Still the bug lingers." />
     <MESSAGE value="Bug Fix : Message Service for team collab is now up and running.&#10;&#10;Cause : A service layer talking to another service layer is never a good idea. There were two instances of the same - map.&#10;&#10;Remedy : Rather than call a service to speak to another. Using the view to send message to the team-member after the project has been successfully created." />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug Fix : Message Service for team collab is now up and running.&#10;&#10;Cause : A service layer talking to another service layer is never a good idea. There were two instances of the same - map.&#10;&#10;Remedy : Rather than call a service to speak to another. Using the view to send message to the team-member after the project has been successfully created." />
+    <MESSAGE value="Fixed : Minor Bugs where creator can assign himself as a team-member (not in this system)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed : Minor Bugs where creator can assign himself as a team-member (not in this system)." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>203</line>
+          <line>208</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>609</line>
+          <line>614</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>608</line>
+          <line>613</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>791</line>
+          <line>814</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -432,28 +440,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>408</line>
+          <line>414</line>
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>402</line>
+          <line>408</line>
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>403</line>
+          <line>409</line>
           <option name="timeStamp" value="77" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>404</line>
+          <line>410</line>
           <option name="timeStamp" value="78" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>823</line>
-          <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
