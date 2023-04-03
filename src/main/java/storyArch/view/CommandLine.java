@@ -1,11 +1,11 @@
 package main.java.storyArch.view;
 
 import main.java.storyArch.controller.ArchController;
+import main.java.storyArch.model.IllustrationServices;
 import main.java.storyArch.model.Message;
 import main.java.storyArch.model.SubscriptionType;
 import main.java.storyArch.model.User;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -18,6 +18,8 @@ import java.util.*;
 public class CommandLine implements Serializable {
 
     ArchController archController;
+
+    IllustrationServices illustrationServices;
 
     private Scanner scanner;
 
@@ -46,10 +48,6 @@ public class CommandLine implements Serializable {
             System.out.println("******************");
             connectionStatus = true;
         } catch (UnknownHostException e) {
-            System.out.println("You are Offline, all data will be saved locally on your device until you are online.");
-            System.out.println("Connection Status: false");
-            connectionStatus = false;
-        } catch (IOException e) {
             System.out.println("You are Offline, all data will be saved locally on your device until you are online.");
             System.out.println("Connection Status: false");
             connectionStatus = false;
@@ -144,14 +142,15 @@ public class CommandLine implements Serializable {
 
     private void startLogo() {
         String banner = """
-                  ,---.   ,--.                                  ,---.               ,--.     \s
-                '   .-',-'  '-. ,---. ,--.--.,--. ,--.,-----. /  O  \\ ,--.--. ,---.|  ,---. \s
-                `.  `-.'-.  .-'| .-. ||  .--' \\  '  / '-----'|  .-.  ||  .--'| .--'|  .-.  |\s
-                .-'    | |  |  ' '-' '|  |     \\   '         |  | |  ||  |   \\ `--.|  | |  |\s
-                `-----'  `--'   `---' `--'   .-'  /          `--' `--'`--'    `---'`--' `--'\s
-                                                                                      v 1.0          \s
+                     _______.___________.  ______   .______     ____    ____         ___      .______        ______  __    __ \s
+                    /       |           | /  __  \\  |   _  \\    \\   \\  /   /        /   \\     |   _  \\      /      ||  |  |  |\s
+                   |   (----`---|  |----`|  |  |  | |  |_)  |    \\   \\/   / ______ /  ^  \\    |  |_)  |    |  ,----'|  |__|  |\s
+                    \\   \\       |  |     |  |  |  | |      /      \\_    _/ |______/  /_\\  \\   |      /     |  |     |   __   |\s
+                .----)   |      |  |     |  `--'  | |  |\\  \\----.   |  |         /  _____  \\  |  |\\  \\----.|  `----.|  |  |  |\s
+                |_______/       |__|      \\______/  | _| `._____|   |__|        /__/     \\__\\ | _| `._____| \\______||__|  |__|\s
+                                                                                                                         v 1.0 \s
                 """;
-        ;
+
 
         System.out.println(banner);
 
@@ -223,7 +222,6 @@ public class CommandLine implements Serializable {
 
     /**
      * Hashes the password using SHA-256
-     *
      * @param password - Password to be hashed
      * @return - Hashed password
      */
@@ -354,7 +352,7 @@ public class CommandLine implements Serializable {
                 case '1' -> {
                     System.out.println("Project Menu");
                     //TODO : Create a project menu as per the requirements
-                    //  projectMenu();
+                    projectMenu();
                 }
                 case '2' -> {
                     System.out.println("View My Account Details");
@@ -415,9 +413,9 @@ public class CommandLine implements Serializable {
         System.out.println("Do you want to upgrade to premium? (Y/N)");
         System.out.println("******************");
         String line = scanner.nextLine().trim();
-        if(line.length() == 1){
+        if (line.length() == 1) {
             switch (line.charAt(0)) {
-                case 'Y'|'y' -> {
+                case 'Y' | 'y' -> {
                     System.out.println("Upgrading to Premium");
                     System.out.println("******************");
                     try {
@@ -480,9 +478,9 @@ public class CommandLine implements Serializable {
         if (line.length() == 1) {
             switch (line.charAt(0)) {
                 case '1' -> {
-                    System.out.println("Project Menu");
+
                     //TODO : Create a project menu as per the requirements
-                    //  projectMenu();
+                    projectMenu();
                 }
                 case '2' -> {
                     System.out.println("View My Account Details");
@@ -553,7 +551,6 @@ public class CommandLine implements Serializable {
                 String userName = "";
                 for (Map.Entry<String, User> entry : userInfo.entrySet()) {
                     if (entry.getValue().getSubscriptionType().equals(SubscriptionType.Premium)) {
-                        date = entry.getValue().getSubscriptionStartDate();
                         userName = entry.getKey();
                     }
                 }
@@ -689,4 +686,171 @@ public class CommandLine implements Serializable {
         System.out.println("*************************");
         System.exit(0);
     }
+
+    private void projectMenu() {
+        //TODO : Create a project menu as per the requirements
+        System.out.println("******************");
+        System.out.println("Welcome to the Project Menu");
+        System.out.println("******************");
+        System.out.println("""
+                1. Create a Project
+                2. Open a Project
+                3. View All Projects
+                4. Delete a Project
+                5. Back to Main Menu""");
+        System.out.println("******************");
+        System.out.println("Please enter your choice: ");
+        String line = scanner.nextLine().trim();
+        if (line.length() == 1) {
+            switch (line.charAt(0)) {
+                case '1' -> {
+                    createProject();
+                }
+                case '2' -> {
+                    //TODO : Open a project
+                    // openProject();
+                }
+                case '3' -> {
+                    //TODO : View all projects
+                    // viewAllProjects();
+                }
+                case '4' -> {
+                    //TODO : Delete a project
+                    //  deleteProject();
+                }
+                case '5' -> {
+                    if (userInfo.entrySet().iterator().next().getValue().getSubscriptionType().equals(SubscriptionType.Premium)) {
+                        premiumMenu();
+                    } else {
+                        basicMenu();
+                    }
+                }
+                default -> {
+                    System.out.println("Please enter a valid option");
+                    System.out.println("******************");
+                    projectMenu();
+                }
+            }
+        } else {
+            System.out.println("Please enter a valid option");
+            System.out.println("******************");
+            projectMenu();
+        }
+    }
+
+    private void createProject() {
+        List<String> teamMembers = new ArrayList<>();
+        System.out.println("******************");
+        System.out.println("Create a Project");
+        System.out.println("******************");
+        System.out.println("Please enter the name of the project: ");
+        String projectName = scanner.nextLine().trim();
+        System.out.println("Please enter the description of the project: ");
+        String projectDescription = scanner.nextLine().trim();
+        String creator = userInfo.entrySet().iterator().next().getKey();
+        Date date = new Date();
+        System.out.println("Do you want to make use of External Illustration Services? (Y/N)");
+        // Add enum choice for external illustration services
+        String choice = scanner.nextLine().trim();
+        choice.toLowerCase();
+        if (choice.length() == 1) {
+            switch (choice.charAt(0)) {
+                case ('y') -> {
+
+                    illustrationServices = IllustrationServices.YES;
+                    archController.illustrationServiceAPI();
+                }
+                case ('n') -> {
+                    illustrationServices = IllustrationServices.NO;
+                    System.out.println("External Illustration Services will not be used");
+                }
+                default -> {
+                    System.out.println("Please enter a valid option");
+                    System.out.println("******************");
+                    createProject();
+                }
+            }
+        } else {
+            System.out.println("Please enter a valid option");
+            System.out.println("******************");
+            createProject();
+        }
+        if (userInfo.entrySet().iterator().next().getValue().getSubscriptionType().equals(SubscriptionType.Premium)) {
+            System.out.println("With Premium Subscription, you can add team members to your project");
+            System.out.println("Do you want to add team members to your project? (Y/N)");
+            String line = scanner.nextLine().trim();
+            line.toLowerCase();
+            if (line.length() == 1) {
+                switch (line.charAt(0)) {
+                    case ('y') -> {
+                        System.out.println("Please enter the userName of the team members you want to add and separate them using a comma: ");
+
+                        String teamMember = scanner.nextLine().trim();
+                        String[] teamMemberArray = teamMember.split(",");
+                        for (String s : teamMemberArray) {
+                            teamMembers.add(s);
+                        }
+                        System.out.println("Team members added successfully");
+                        try {
+                            archController.createProject(projectName, projectDescription, creator, date, illustrationServices, teamMembers);
+                            System.out.println("Project created successfully");
+                            System.out.println("******************");
+                            projectMenu();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                            System.out.println("******************");
+                            projectMenu();
+                        }
+                    }
+                    case ('n') -> {
+                        try {
+                            archController.createProject(projectName, projectDescription, creator, date, illustrationServices, teamMembers);
+                            System.out.println("Project created successfully");
+                            System.out.println("******************");
+                            projectMenu();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                            System.out.println("******************");
+                            projectMenu();
+                        }
+                    }
+                    default -> {
+                        System.out.println("Please enter a valid option");
+                        System.out.println("******************");
+                        projectMenu();
+                    }
+                }
+            } else {
+                System.out.println("Please enter a valid option");
+                System.out.println("******************");
+                projectMenu();
+            }
+
+        } else {
+            System.out.println("With Basic Subscription, team collaboration is not available");
+            try {
+                // Empty list
+                archController.createProject(projectName, projectDescription, creator, date, illustrationServices, teamMembers);
+                System.out.println("Project created successfully");
+                System.out.println("******************");
+                projectMenu();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                System.out.println("******************");
+                projectMenu();
+            }
+        }
+
+
+    }
+
+    private void viewAllProjects() {
+        System.out.println("******************");
+        System.out.println("Viewing All Projects");
+        System.out.println("******************");
+        String userName = userInfo.entrySet().iterator().next().getKey();
+
+
+    }
+
 }

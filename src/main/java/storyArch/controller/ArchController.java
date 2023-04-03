@@ -1,15 +1,19 @@
 package main.java.storyArch.controller;
 
+import main.java.storyArch.api.IllustrationServicesAPI;
 import main.java.storyArch.api.PaymentAPI;
+import main.java.storyArch.model.IllustrationServices;
 import main.java.storyArch.model.Message;
 import main.java.storyArch.model.SubscriptionType;
 import main.java.storyArch.model.User;
 import main.java.storyArch.service.MessageService;
+import main.java.storyArch.service.ProjectService;
 import main.java.storyArch.service.UserService;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,6 +29,10 @@ public class ArchController implements Serializable {
     MessageService messageService = new MessageService();
 
     PaymentAPI paymentAPI = new PaymentAPI();
+
+    ProjectService projectService = new ProjectService();
+
+    IllustrationServicesAPI illustrationServicesAPI = new IllustrationServicesAPI();
 
     public void register(String fullName, String email, String userName, String password, SubscriptionType subscriptionType, Date subscriptionDate) {
         userService.register(fullName, email, userName, password, subscriptionType, subscriptionDate);
@@ -74,5 +82,13 @@ public class ArchController implements Serializable {
 
     public void updateSubscriptionDate(String userName, Date presentDate) {
         userService.updateSubscriptionDate(userName, presentDate);
+    }
+
+    public void illustrationServiceAPI() {
+        illustrationServicesAPI.redirectToIllustrationService();
+    }
+
+    public void createProject(String projectName, String projectDescription, String creator, Date date, IllustrationServices illustrationServices, List<String> teamMembers) {
+        projectService.createProject(projectName, projectDescription, creator, date, illustrationServices, teamMembers);
     }
 }
