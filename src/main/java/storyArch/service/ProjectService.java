@@ -1,5 +1,6 @@
 package main.java.storyArch.service;
 
+
 import main.java.storyArch.model.IllustrationServices;
 import main.java.storyArch.model.Project;
 
@@ -8,13 +9,14 @@ import java.util.*;
 
 public class ProjectService implements Serializable {
 
-    MessageService messageService = new MessageService();
+
+    MessageService messageService;
     private Map<Integer, Project> projects = new HashMap<>();
 
     private List<Integer> projectIDS = new ArrayList<>();
 
 
-    public Map<Integer,Project> getProjectByCreator(String creator) {
+    public Map<Integer, Project> getProjectByCreator(String creator) {
         Map<Integer, Project> projectsByCreator = new HashMap<>();
         for (Project project : projects.values()) {
             if (project.getCreator().equals(creator.toLowerCase())) {
@@ -33,13 +35,6 @@ public class ProjectService implements Serializable {
         for (Project project : projects.values()) {
             if (project.getProjectName().equals(projectName.toLowerCase())) {
                 throw new IllegalArgumentException("Project name already exists ! Create a new project name.");
-            }
-        }
-        // If List is of team members , dissect the list and send a message to the team members that they have been added to the project.
-        if (teamMembers != null) {
-            // Send a message to the team members that they have been added to the project.
-            for (String member : teamMembers) {
-                messageService.sendMessage(member.toLowerCase(), "System", "You have been added to the project by " + creator.toLowerCase() + " to: " + projectName, date);
             }
         }
         // Create a random Project ID using numeric values of 7 digits

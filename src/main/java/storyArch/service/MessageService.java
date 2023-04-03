@@ -53,7 +53,7 @@ public class MessageService implements Serializable {
         while (messageIDS.contains(randomNum)) {
             randomNum = rand.nextInt((1000000 - 1) + 1) + 1;
         }
-        messages.put(randomNum, new Message(userName.toLowerCase(), system.toLowerCase(), message, presentDate));
+        messages.put(randomNum, new Message(randomNum, userName.toLowerCase(), system.toLowerCase(), message, presentDate));
     }
 
 

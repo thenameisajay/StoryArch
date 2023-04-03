@@ -9,6 +9,7 @@ import java.util.Date;
  */
 public class Message implements Serializable {
 
+
     private long MessageID;
     private String toUser;
 
@@ -18,11 +19,20 @@ public class Message implements Serializable {
 
     private Date timeStamp;
 
-    public Message(String toUser, String fromUser, String message, Date timeStamp) {
+    public Message(long messageID, String toUser, String fromUser, String message, Date timeStamp) {
+        MessageID = messageID;
         this.toUser = toUser;
         this.fromUser = fromUser;
         this.message = message;
         this.timeStamp = timeStamp;
+    }
+
+    public long getMessageID() {
+        return MessageID;
+    }
+
+    public void setMessageID(long messageID) {
+        MessageID = messageID;
     }
 
     public String getToUser() {

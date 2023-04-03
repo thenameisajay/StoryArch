@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Projects are now viewable by team-members and anyone can delete a project using Project-ID (only creator should have the privilege).&#10;&#10;ISSUE : Bug exists in the message service , for some reason the storage is getting wiped after saving the message.">
+    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="now data is loaded by default. renamed cache map in view to differentiate between storage in service layer.&#10;Still the bug lingers.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/ProjectService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/projectData.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/projectData.ser" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +95,7 @@
       <workItem from="1680027171395" duration="1279000" />
       <workItem from="1680075675647" duration="10000" />
       <workItem from="1680269095942" duration="95000" />
-      <workItem from="1680434975122" duration="40143000" />
+      <workItem from="1680434975122" duration="41949000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a simple user menu for the view and updating the data model for the User.">
       <created>1679998692909</created>
@@ -310,7 +314,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680543410399</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="now data is loaded by default. renamed cache map in view to differentiate between storage in service layer.&#10;Still the bug lingers.">
+      <created>1680544068320</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1680544068320</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -328,7 +339,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed all the extends for now." />
     <MESSAGE value="Removed all the extends for now.(Reverted implementation)" />
     <MESSAGE value="writing the view Class for StoryArch." />
     <MESSAGE value="Reconfigured the entire system , with base model reconfiguration, now able to register as user (basic or premium)." />
@@ -353,35 +363,31 @@
     <MESSAGE value="Users can now create a new Project and also opt for  External Illustration Services and basic version does not include team collaboration.&#10;&#10;If team members are added to the Project , they are sent a message via the applications messaging system." />
     <MESSAGE value="Limited the basic version to create only 10 projects max.&#10;&#10;Users are now able to save and load the project data." />
     <MESSAGE value="Projects are now viewable by team-members and anyone can delete a project using Project-ID (only creator should have the privilege).&#10;&#10;ISSUE : Bug exists in the message service , for some reason the storage is getting wiped after saving the message." />
-    <option name="LAST_COMMIT_MESSAGE" value="Projects are now viewable by team-members and anyone can delete a project using Project-ID (only creator should have the privilege).&#10;&#10;ISSUE : Bug exists in the message service , for some reason the storage is getting wiped after saving the message." />
+    <MESSAGE value="now data is loaded by default. renamed cache map in view to differentiate between storage in service layer.&#10;Still the bug lingers." />
+    <option name="LAST_COMMIT_MESSAGE" value="now data is loaded by default. renamed cache map in view to differentiate between storage in service layer.&#10;Still the bug lingers." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>202</line>
+          <line>203</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>608</line>
+          <line>609</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>607</line>
+          <line>608</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>789</line>
+          <line>790</line>
           <option name="timeStamp" value="58" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/ProjectService.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
@@ -419,19 +425,29 @@
           <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="72" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
-          <line>9</line>
-          <option name="timeStamp" value="73" />
+          <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
+          <line>408</line>
+          <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>407</line>
-          <option name="timeStamp" value="75" />
+          <line>402</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
+          <line>403</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
+          <line>404</line>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
+          <line>822</line>
+          <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
@@ -450,6 +466,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
+          <line>74</line>
+          <properties class="main.java.storyArch.service.MessageService" method="deleteMessage">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="79" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -62,7 +62,8 @@ public class CommandLine implements Serializable {
         System.out.println("2. Register");
         System.out.println("3.Save Data");
         System.out.println("4. Exit");
-        System.out.println("Enter your choice: ");
+        System.out.println("******************");
+        System.out.println(">> Enter your choice: ");
         System.out.println("******************");
 
     }
@@ -822,6 +823,13 @@ public class CommandLine implements Serializable {
                             archController.createProject(projectName, projectDescription, creator, date, illustrationServices, teamMembers);
                             System.out.println("Project created successfully");
                             System.out.println("******************");
+                            // If List is of team members , dissect the list and send a message to the team members that they have been added to the project.
+                            if (teamMembers != null) {
+                                // Send a message to the team members that they have been added to the project.
+                                for (String member : teamMembers) {
+                                    archController.sendMessage(member.toLowerCase(), "System", "You have been added to the project by " + creator.toLowerCase() + " to: " + projectName, date);
+                                }
+                            }
                             projectMenu();
                         } catch (Exception e) {
                             System.out.println(e.getMessage());
@@ -931,6 +939,7 @@ if (projects.size() == 0 && sharedProjects.size() == 0){
         }
     }
 }
+        projects.clear();
         projectMenu();
     }
 
