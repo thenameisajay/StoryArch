@@ -2,6 +2,7 @@ package main.java.storyArch.controller;
 
 import main.java.storyArch.api.IllustrationServicesAPI;
 import main.java.storyArch.api.PaymentAPI;
+import main.java.storyArch.api.PublisherAPI;
 import main.java.storyArch.model.*;
 import main.java.storyArch.service.MessageService;
 import main.java.storyArch.service.ProjectService;
@@ -27,6 +28,8 @@ public class ArchController implements Serializable {
     MessageService messageService = new MessageService();
 
     PaymentAPI paymentAPI = new PaymentAPI();
+
+    PublisherAPI publisherAPI = new PublisherAPI();
 
     ProjectService projectService = new ProjectService();
 
@@ -122,5 +125,13 @@ public class ArchController implements Serializable {
 
     public void deleteStoryboard(String storyboardID, String userName) {
         storyBoardService.deleteStoryboard(storyboardID, userName);
+    }
+
+    public void submitStoryboardViaAPI(String storyboardID) {
+        publisherAPI.submitStoryboardViaAPI(storyboardID);
+    }
+
+    public void checkIfStoryboardExists(String storyboardID) {
+        storyBoardService.checkIfStoryboardExists(storyboardID);
     }
 }

@@ -750,7 +750,6 @@ public class CommandLine implements Serializable {
         }
     }
 
-    //TODO: OPEN A PROJECT AND ACCESS THE STORYBOARD , Its settings and also leave the project.
     private void openProject() {
         System.out.println("******************");
         System.out.println("Open a Project");
@@ -969,14 +968,15 @@ public class CommandLine implements Serializable {
         for (Map.Entry<Integer, Project> entry : privateProject.entrySet()) {
             projectName = entry.getValue().getProjectName();
         }
-        System.out.println(" " + projectName + "");
+        System.out.println(" " + projectName.toUpperCase() + "");
         System.out.println("******************");
         System.out.println("1. Add a Storyboard");
         System.out.println("2. Open a Storyboard");
         System.out.println("3. View Project Details");
         System.out.println("4. View Storyboards");
         System.out.println("5. Delete a Storyboard");
-        System.out.println("6. Back to Project Menu");
+        System.out.println("6.Submit a Storyboard to Publisher");
+        System.out.println("7. Back to Project Menu");
         System.out.println("******************");
         System.out.println("Please enter an option");
         String option = scanner.nextLine();
@@ -986,8 +986,7 @@ public class CommandLine implements Serializable {
                     addStoryboard();
                 }
                 case '2' -> {
-                    //TODO: Open a storyboard
-                    //  openStoryboard();
+                    openStoryboard();
                 }
                 case '3' -> {
                     viewProjectDetails();
@@ -999,6 +998,9 @@ public class CommandLine implements Serializable {
                     deleteStoryboard();
                 }
                 case '6' -> {
+                    submitStoryboardViaAPI();
+                }
+                case '7' -> {
                     projectMenu();
                 }
             }
@@ -1007,6 +1009,28 @@ public class CommandLine implements Serializable {
             System.out.println("******************");
             insideProjectMenu();
         }
+    }
+
+    private void submitStoryboardViaAPI() {
+        System.out.println("******************");
+        System.out.println("Submitting a Storyboard to a Publisher");
+        System.out.println("******************");
+        System.out.println("Please enter the storyboard ID");
+        String storyboardID = scanner.nextLine();
+        try {
+            archController.checkIfStoryboardExists(storyboardID);
+            archController.submitStoryboardViaAPI(storyboardID);
+            System.out.println("Storyboard submitted successfully");
+            insideProjectMenu();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            insideProjectMenu();
+        }
+    }
+
+    private void openStoryboard() {
+
+
     }
 
     private void deleteStoryboard() {

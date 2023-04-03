@@ -87,4 +87,12 @@ public class StoryBoardService {
             }
         }
     }
+
+    public void checkIfStoryboardExists(String storyboardID) {
+        if (storyboardID == null || storyboardID.isEmpty())
+            throw new IllegalArgumentException("Storyboard ID cannot be empty");
+        // Check if the storyboard exists in the database
+        if (!storyBoards.containsKey(Integer.parseInt(storyboardID)))
+            throw new IllegalArgumentException("Storyboard does not exist");
+    }
 }
