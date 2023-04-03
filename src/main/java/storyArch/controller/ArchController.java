@@ -2,10 +2,7 @@ package main.java.storyArch.controller;
 
 import main.java.storyArch.api.IllustrationServicesAPI;
 import main.java.storyArch.api.PaymentAPI;
-import main.java.storyArch.model.IllustrationServices;
-import main.java.storyArch.model.Message;
-import main.java.storyArch.model.SubscriptionType;
-import main.java.storyArch.model.User;
+import main.java.storyArch.model.*;
 import main.java.storyArch.service.MessageService;
 import main.java.storyArch.service.ProjectService;
 import main.java.storyArch.service.UserService;
@@ -41,11 +38,13 @@ public class ArchController implements Serializable {
     public void saveData() throws IOException {
         userService.saveData();
         messageService.saveData();
+        projectService.saveData();
     }
 
     public void loadData() throws IOException, ClassNotFoundException {
         userService.loadData();
         messageService.loadData();
+        projectService.loadData();
     }
 
     public void paymentAPI() {
@@ -90,5 +89,9 @@ public class ArchController implements Serializable {
 
     public void createProject(String projectName, String projectDescription, String creator, Date date, IllustrationServices illustrationServices, List<String> teamMembers) {
         projectService.createProject(projectName, projectDescription, creator, date, illustrationServices, teamMembers);
+    }
+
+    public Map<Integer, Project> getProjectByCreator(String creator) {
+        return projectService.getProjectByCreator(creator);
     }
 }

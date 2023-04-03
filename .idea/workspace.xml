@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="more reformatting in some methods.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/api/IllustrationServicesAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/IllustrationServices.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Project.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/ProjectService.java" afterDir="false" />
+    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Users can now create a new Project and also opt for  External Illustration Services and basic version does not include team collaboration.&#10;&#10;If team members are added to the Project , they are sent a message via the applications messaging system.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/ProjectService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +93,7 @@
       <workItem from="1680027171395" duration="1279000" />
       <workItem from="1680075675647" duration="10000" />
       <workItem from="1680269095942" duration="95000" />
-      <workItem from="1680434975122" duration="32987000" />
+      <workItem from="1680434975122" duration="34611000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a simple user menu for the view and updating the data model for the User.">
       <created>1679998692909</created>
@@ -294,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680470420479</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Users can now create a new Project and also opt for  External Illustration Services and basic version does not include team collaboration.&#10;&#10;If team members are added to the Project , they are sent a message via the applications messaging system.">
+      <created>1680525657460</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1680525657460</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,7 +316,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented Job MODEL (extends Invoice which extends User)." />
     <MESSAGE value="Implemented Chapter MODEL (extends Job which extends User)." />
     <MESSAGE value="Implemented Story MODEL (extends Chapter which extends JOB -&gt; User)." />
     <MESSAGE value="Removed all the extends for now." />
@@ -337,64 +340,60 @@
     <MESSAGE value="renamed some-methods to follow Java naming conventions and reformatted code." />
     <MESSAGE value="reformatted main menu to look more appeasing as an application." />
     <MESSAGE value="more reformatting in some methods." />
-    <option name="LAST_COMMIT_MESSAGE" value="more reformatting in some methods." />
+    <MESSAGE value="Users can now create a new Project and also opt for  External Illustration Services and basic version does not include team collaboration.&#10;&#10;If team members are added to the Project , they are sent a message via the applications messaging system." />
+    <option name="LAST_COMMIT_MESSAGE" value="Users can now create a new Project and also opt for  External Illustration Services and basic version does not include team collaboration.&#10;&#10;If team members are added to the Project , they are sent a message via the applications messaging system." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>196</line>
+          <line>195</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>599</line>
+          <line>598</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>598</line>
+          <line>597</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>806</line>
+          <line>805</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>794</line>
+          <line>793</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>832</line>
+          <line>838</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>354</line>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>759</line>
+          <line>758</line>
           <option name="timeStamp" value="51" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>760</line>
+          <line>759</line>
           <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>757</line>
+          <line>756</line>
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/ProjectService.java</url>
-          <line>33</line>
+          <line>42</line>
           <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
@@ -408,7 +407,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/ProjectService.java</url>
-          <line>17</line>
+          <line>26</line>
           <properties class="main.java.storyArch.service.ProjectService" method="createProject">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

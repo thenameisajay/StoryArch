@@ -1,10 +1,7 @@
 package main.java.storyArch.view;
 
 import main.java.storyArch.controller.ArchController;
-import main.java.storyArch.model.IllustrationServices;
-import main.java.storyArch.model.Message;
-import main.java.storyArch.model.SubscriptionType;
-import main.java.storyArch.model.User;
+import main.java.storyArch.model.*;
 
 import java.io.Serializable;
 import java.net.InetAddress;
@@ -26,6 +23,8 @@ public class CommandLine implements Serializable {
     // Saving cache data from the service layer.
     private Map<String, User> userInfo = new HashMap<>();
     private Map<String, Message> messages = new HashMap<>();
+
+    private Map<Integer, Project> projects = new HashMap<>();
     private boolean loginStatus = false;
 
     private boolean connectionStatus = false;
@@ -688,7 +687,7 @@ public class CommandLine implements Serializable {
     }
 
     private void projectMenu() {
-        //TODO : Create a project menu as per the requirements
+        //TODO : Create a project menu as per the requirements , add a check for basic menu if the user is a basic user only able to create 10 projects.
         System.out.println("******************");
         System.out.println("Welcome to the Project Menu");
         System.out.println("******************");
@@ -762,7 +761,7 @@ public class CommandLine implements Serializable {
                 }
                 case ('n') -> {
                     illustrationServices = IllustrationServices.NO;
-                    System.out.println("External Illustration Services will not be used");
+                    System.out.println("External Illustration Services will not be used.");
                 }
                 default -> {
                     System.out.println("Please enter a valid option");
@@ -827,15 +826,29 @@ public class CommandLine implements Serializable {
             }
 
         } else {
-            System.out.println("With Basic Subscription, team collaboration is not available");
-            try {
-                // Empty list
-                archController.createProject(projectName, projectDescription, creator, date, illustrationServices, teamMembers);
-                System.out.println("Project created successfully");
-                System.out.println("******************");
-                projectMenu();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
+            projects = archController.getProjectByCreator(creator);
+            System.out.println("With Basic Subscription, Team collaboration is not available.");
+            if (projects.size() < 10) {
+                System.out.println("You can create a maximum of 10 projects.");
+                if(projects.size() == 0)
+                    System.out.println("You can create 10 projects.");
+                else if(projects.size() >= 1)
+                    System.out.println("You can create "+ (10 - projects.size()) + " more project.");
+                try {
+                    // Empty list
+                    archController.createProject(projectName, projectDescription, creator, date, illustrationServices, teamMembers);
+                    System.out.println("Project created successfully");
+                    System.out.println("******************");
+                    projectMenu();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("******************");
+                    projectMenu();
+                }
+            } else {
+                System.out.println("You have reached the maximum number of projects you can create");
+                System.out.println("Please upgrade to Premium Subscription to create more projects");
+                System.out.println("Or delete a project to create a new one");
                 System.out.println("******************");
                 projectMenu();
             }
