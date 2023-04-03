@@ -53,6 +53,7 @@ public class ProjectService implements Serializable {
         // Add the project to the database.
         projects.put(projectID, new Project(projectID, projectName.toLowerCase(), projectDescription, creator.toLowerCase(), date, illustrationServices, teamMembers));
     }
+
     public void saveData() throws IOException {
         FileOutputStream f = new FileOutputStream("src/resources/projectData.ser");
         ObjectOutputStream o = new ObjectOutputStream(f);
@@ -71,7 +72,7 @@ public class ProjectService implements Serializable {
         FileInputStream fi = new FileInputStream("src/resources/projectData.ser");
         ObjectInputStream oi = new ObjectInputStream(fi);
         // Read objects
-       projects = (Map<Integer, Project>) oi.readObject();
+        projects = (Map<Integer, Project>) oi.readObject();
         oi.close();
         fi.close();
         // Take the key value (ProjectID) and add it to the arraylist
