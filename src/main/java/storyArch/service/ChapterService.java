@@ -75,7 +75,7 @@ public class ChapterService implements Serializable {
         try {
             PrintWriter pWriter = new PrintWriter(new File("src/resources/application/chapters.txt"));
             for (Map.Entry<Integer, Chapter> entry : chapters.entrySet()) {
-                pWriter.println(entry.getValue().getChapterName() + "\n " + entry.getValue().getChapterDescription() + "\n " + entry.getValue().getCreatedDate() + " \n" + entry.getValue().getModifiedDate() + "\n " + entry.getValue().getCreator() + "\n " + entry.getValue().getLastModifiedBy() + "\n " + entry.getValue().getVersion());
+                pWriter.println("Chapter Name: " + entry.getValue().getChapterName() + "\n " + "Chapter Description: " + entry.getValue().getChapterDescription() + "\n " + "Date Created: " + entry.getValue().getCreatedDate() + " \n" + "Date Modified: " + entry.getValue().getModifiedDate() + "\n " + "Creator: " + entry.getValue().getCreator() + "\n " + "Last Modified By: " + entry.getValue().getLastModifiedBy() + "\n " + "Version: " + entry.getValue().getVersion());
             }
             pWriter.close();
         } catch (FileNotFoundException e) {
