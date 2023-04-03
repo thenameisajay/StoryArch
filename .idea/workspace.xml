@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Limited the basic version to create only 10 projects max.&#10;&#10;Users are now able to save and load the project data.">
+    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Projects are now viewable by team-members and anyone can delete a project using Project-ID (only creator should have the privilege).&#10;&#10;ISSUE : Bug exists in the message service , for some reason the storage is getting wiped after saving the message.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Project.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/ProjectService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/projectData.ser" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +91,7 @@
       <workItem from="1680027171395" duration="1279000" />
       <workItem from="1680075675647" duration="10000" />
       <workItem from="1680269095942" duration="95000" />
-      <workItem from="1680434975122" duration="39407000" />
+      <workItem from="1680434975122" duration="40143000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a simple user menu for the view and updating the data model for the User.">
       <created>1679998692909</created>
@@ -307,7 +303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680528259222</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Projects are now viewable by team-members and anyone can delete a project using Project-ID (only creator should have the privilege).&#10;&#10;ISSUE : Bug exists in the message service , for some reason the storage is getting wiped after saving the message.">
+      <created>1680543410399</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1680543410399</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,7 +328,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented Story MODEL (extends Chapter which extends JOB -&gt; User)." />
     <MESSAGE value="Removed all the extends for now." />
     <MESSAGE value="Removed all the extends for now.(Reverted implementation)" />
     <MESSAGE value="writing the view Class for StoryArch." />
@@ -350,7 +352,8 @@
     <MESSAGE value="more reformatting in some methods." />
     <MESSAGE value="Users can now create a new Project and also opt for  External Illustration Services and basic version does not include team collaboration.&#10;&#10;If team members are added to the Project , they are sent a message via the applications messaging system." />
     <MESSAGE value="Limited the basic version to create only 10 projects max.&#10;&#10;Users are now able to save and load the project data." />
-    <option name="LAST_COMMIT_MESSAGE" value="Limited the basic version to create only 10 projects max.&#10;&#10;Users are now able to save and load the project data." />
+    <MESSAGE value="Projects are now viewable by team-members and anyone can delete a project using Project-ID (only creator should have the privilege).&#10;&#10;ISSUE : Bug exists in the message service , for some reason the storage is getting wiped after saving the message." />
+    <option name="LAST_COMMIT_MESSAGE" value="Projects are now viewable by team-members and anyone can delete a project using Project-ID (only creator should have the privilege).&#10;&#10;ISSUE : Bug exists in the message service , for some reason the storage is getting wiped after saving the message." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -424,6 +427,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
           <line>9</line>
           <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
+          <line>407</line>
+          <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>

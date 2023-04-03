@@ -22,7 +22,7 @@ public class CommandLine implements Serializable {
 
     // Saving cache data from the service layer.
     private Map<String, User> userInfo = new HashMap<>();
-    private Map<String, Message> messages = new HashMap<>();
+    private Map<String, Message> messageCache = new HashMap<>();
 
     private Map<Integer, Project> projects = new HashMap<>();
 
@@ -375,9 +375,9 @@ public class CommandLine implements Serializable {
                         for (Map.Entry<String, User> entry : userInfo.entrySet()) {
                             userName = entry.getKey();
                         }
-                        messages = archController.viewMessage(userName);
+                        messageCache = archController.viewMessage(userName);
                         archController.deleteMessage(userName);
-                        if (messages.isEmpty()) {
+                        if (messageCache.isEmpty()) {
                             System.out.println("You have no messages");
                             System.out.println("******************");
                             basicMenu();
@@ -405,7 +405,7 @@ public class CommandLine implements Serializable {
                     loginStatus = false;
                     userInfo.clear();
                     projects.clear();
-                    messages.clear();
+                    messageCache.clear();
                     sharedProjects.clear();
                 }
                 default -> System.out.println("Please enter a valid option");
@@ -458,15 +458,15 @@ public class CommandLine implements Serializable {
     }
 
     private void printInformation() {
-        for (Map.Entry<String, Message> entry : messages.entrySet()) {
+        for (Map.Entry<String, Message> entry : messageCache.entrySet()) {
             System.out.println("Message Sender : " + entry.getValue().getFromUser());
             System.out.println("Message Date : " + entry.getValue().getTimeStamp());
             System.out.println("Message : " + entry.getValue().getMessage());
             System.out.println("******************");
         }
-        System.out.println("You have " + messages.size() + " messages");
+        System.out.println("You have " + messageCache.size() + " messages");
         System.out.println("******************");
-        messages.clear();
+        messageCache.clear();
     }
 
     private void premiumMenu() {
@@ -506,9 +506,9 @@ public class CommandLine implements Serializable {
                         for (Map.Entry<String, User> entry : userInfo.entrySet()) {
                             userName = entry.getKey();
                         }
-                        messages = archController.viewMessage(userName);
+                        messageCache = archController.viewMessage(userName);
                         archController.deleteMessage(userName);
-                        if (messages.isEmpty()) {
+                        if (messageCache.isEmpty()) {
                             System.out.println("You have no messages");
                             System.out.println("******************");
                             premiumMenu();
