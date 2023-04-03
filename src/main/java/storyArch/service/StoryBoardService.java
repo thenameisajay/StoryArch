@@ -95,4 +95,12 @@ public class StoryBoardService {
         if (!storyBoards.containsKey(Integer.parseInt(storyboardID)))
             throw new IllegalArgumentException("Storyboard does not exist");
     }
+
+    public Map<Integer, StoryBoard> getStoryboard(String storyboardID) {
+        Map<Integer, StoryBoard> storyBoard = new HashMap<>();
+        storyBoard.put(Integer.parseInt(storyboardID), storyBoards.get(Integer.parseInt(storyboardID)));
+        return storyBoard;
+    }
+
+
 }

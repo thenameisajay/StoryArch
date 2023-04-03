@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Users are now able to create a StoryBoard (Plot Space) inside a Project and multiple Storyboards can exist and only the creator has the permission can delete the board.Only those invited to the Project can add/edit/view its contents.">
+    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Users are now able to submit plots to publishers via API.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Chapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/ChapterService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/api/PublisherAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/api/PublisherAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/StoryBoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/StoryBoardService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/projectData.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/projectData.ser" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +30,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/storyArch/service/StoryBoardService.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -94,7 +97,7 @@
       <workItem from="1680027171395" duration="1279000" />
       <workItem from="1680075675647" duration="10000" />
       <workItem from="1680269095942" duration="95000" />
-      <workItem from="1680434975122" duration="49680000" />
+      <workItem from="1680434975122" duration="57976000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a simple user menu for the view and updating the data model for the User.">
       <created>1679998692909</created>
@@ -341,7 +344,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680551474274</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Users are now able to submit plots to publishers via API.">
+      <created>1680553739184</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1680553739184</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,7 +369,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Now successfully able to log-in to the system using sha-256 authentication and based on the subscription type , the respective menu is shown." />
     <MESSAGE value="premium menu is up and running , some of the menu options such as delete my account and log out works." />
     <MESSAGE value="added initialisation check for premium users :&#10;     * To check if the subscription of a premium user is still valid or not.&#10;     * If the subscription is expired, the user is downgraded to a basic user.&#10;     * If the subscription is still about to expire, the user is notified.&#10;     *&#10;     * @return - Returns true if the subscription is valid or false if the subscription is expired&#10;     &#10;     Also now able to view ACCOUNT DETAILS AND HOW MANY DAYS UNTIL SUBSCRIPTION EXPIRES." />
     <MESSAGE value="Message Service has been initialised and now able to view any messages from user or system ( only for warning purposes at the moment)." />
@@ -384,29 +393,30 @@
     <MESSAGE value="Bug Fix : Message Service for team collab is now up and running.&#10;&#10;Cause : A service layer talking to another service layer is never a good idea. There were two instances of the same - map.&#10;&#10;Remedy : Rather than call a service to speak to another. Using the view to send message to the team-member after the project has been successfully created." />
     <MESSAGE value="Fixed : Minor Bugs where creator can assign himself as a team-member (not in this system)." />
     <MESSAGE value="Users are now able to create a StoryBoard (Plot Space) inside a Project and multiple Storyboards can exist and only the creator has the permission can delete the board.Only those invited to the Project can add/edit/view its contents." />
-    <option name="LAST_COMMIT_MESSAGE" value="Users are now able to create a StoryBoard (Plot Space) inside a Project and multiple Storyboards can exist and only the creator has the permission can delete the board.Only those invited to the Project can add/edit/view its contents." />
+    <MESSAGE value="Users are now able to submit plots to publishers via API." />
+    <option name="LAST_COMMIT_MESSAGE" value="Users are now able to submit plots to publishers via API." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>208</line>
+          <line>210</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>614</line>
+          <line>616</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>613</line>
+          <line>615</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>813</line>
+          <line>815</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -446,23 +456,38 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>414</line>
+          <line>416</line>
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>408</line>
+          <line>410</line>
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>409</line>
+          <line>411</line>
           <option name="timeStamp" value="77" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>410</line>
+          <line>412</line>
           <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/ChapterService.java</url>
+          <line>147</line>
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
+          <line>1251</line>
+          <option name="timeStamp" value="93" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/ChapterService.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="97" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
@@ -490,6 +515,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/ChapterService.java</url>
+          <line>127</line>
+          <properties class="main.java.storyArch.service.ChapterService" method="editChapter">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="91" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

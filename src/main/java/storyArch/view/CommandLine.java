@@ -31,6 +31,8 @@ public class CommandLine implements Serializable {
     private Map<Integer, Project> sharedProjects = new HashMap<>();
 
     private Map<Integer, StoryBoard> storyBoard = new HashMap<>();
+
+    private Map<Integer, Chapter> chapters = new HashMap<>();
     private boolean loginStatus = false;
 
     private boolean connectionStatus = false;
@@ -1029,10 +1031,21 @@ public class CommandLine implements Serializable {
     }
 
     private void openStoryboard() {
-
+        System.out.println("******************");
+        System.out.println("Opening a Storyboard");
+        System.out.println("******************");
+        System.out.println("Please enter the storyboard ID");
+        String storyboardID = scanner.nextLine();
+        try {
+            archController.checkIfStoryboardExists(storyboardID);
+            storyBoard = archController.getStoryboard(storyboardID);
+            insideStoryboardMenu();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            insideProjectMenu();
+        }
 
     }
-
     private void deleteStoryboard() {
         System.out.println("******************");
         System.out.println("Deleting a Storyboard");
@@ -1146,4 +1159,208 @@ public class CommandLine implements Serializable {
         System.out.println("******************");
         insideProjectMenu();
     }
+
+    private void insideStoryboardMenu() {
+        // TODO : ADD CHAPTER , EDIT CHAPTER , DELETE CHAPTER , BACK TO PROJECT MENU
+        String storyboardName = "";
+        System.out.println("******************");
+        for (Map.Entry<Integer, StoryBoard> entry : storyBoard.entrySet()) {
+            storyboardName = entry.getValue().getStoryName();
+        }
+        System.out.println(" " + storyboardName.toUpperCase() + " ");
+        System.out.println("******************");
+        System.out.println("1. Add a Chapter");
+        System.out.println("2. Edit a Chapter");
+        System.out.println("3. Delete a Chapter");
+        System.out.println("4. View Chapters");
+        System.out.println("5. Back to Project Menu");
+        System.out.println("******************");
+        System.out.println("Please enter an option");
+        String option = scanner.nextLine();
+        if (option.length() == 1) {
+            switch (option.charAt(0)) {
+                case '1' -> {
+
+                    addChapter();
+                }
+                case '2' -> {
+                    editChapter();
+                }
+                case '3' -> {
+                    deleteChapter();
+                }
+                case '4' -> {
+                    viewChapters();
+                }
+                case '5' -> {
+                    insideProjectMenu();
+                }
+            }
+        } else {
+            System.out.println("Please enter a valid option");
+            System.out.println("******************");
+            insideStoryboardMenu();
+        }
+    }
+
+
+    private void addChapter() {
+        System.out.println("******************");
+        System.out.println("Adding a Chapter");
+        System.out.println("******************");
+        System.out.println("Please enter the chapter name");
+        String chapterName = scanner.nextLine();
+        System.out.println("Please enter the chapter description");
+        String chapterDescription = scanner.nextLine();
+        String storyboardID = "";
+        String storyboardName = "";
+        for (Map.Entry<Integer, StoryBoard> entry : storyBoard.entrySet()) {
+            storyboardID = String.valueOf(entry.getKey());
+            storyboardName = entry.getValue().getStoryName();
+        }
+        String creator = userInfo.entrySet().iterator().next().getKey();
+        String lastModifiedBy = userInfo.entrySet().iterator().next().getKey();
+        Date createdDate = new Date();
+        Date modifiedDate = new Date();
+        try {
+            archController.addChapter(storyboardID, storyboardName, chapterName, chapterDescription, createdDate, modifiedDate, creator, lastModifiedBy);
+            System.out.println("Chapter added successfully");
+            insideStoryboardMenu();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            insideStoryboardMenu();
+        }
+
+    }
+
+
+    private void editChapter() {
+        System.out.println("******************");
+        System.out.println("Editing a Chapter");
+        System.out.println("******************");
+        System.out.println("Please enter the chapter ID");
+        String chapterID = scanner.nextLine();
+        String chapterName = "";
+        for (Map.Entry<Integer, Chapter> entry : chapters.entrySet()) {
+            chapterName = entry.getValue().getChapterName();
+        }
+        System.out.println("Please enter the chapter description");
+        String chapterDescription = scanner.nextLine();
+        String modifiedBy = "";
+        modifiedBy = userInfo.entrySet().iterator().next().getValue().getUserName();
+        try {
+            archController.editChapter(Integer.valueOf(chapterID), chapterName, chapterDescription, modifiedBy);
+            System.out.println("Chapter edited successfully");
+            insideStoryboardMenu();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            insideStoryboardMenu();
+        }
+    }
+
+    private void deleteChapter() {
+        System.out.println("******************");
+        System.out.println("Deleting a Chapter");
+        System.out.println("******************");
+        System.out.println("Please enter the chapter ID");
+        String chapterID = scanner.nextLine();
+        String creator = "";
+        for (Map.Entry<Integer, StoryBoard> entry : storyBoard.entrySet()) {
+            creator = entry.getValue().getCreator();
+        }
+        try {
+            archController.deleteChapter(chapterID, creator);
+            System.out.println("Chapter deleted successfully");
+            insideStoryboardMenu();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            insideStoryboardMenu();
+        }
+    }
+
+    private void viewChapters() {
+        System.out.println("******************");
+        System.out.println("Viewing Chapters");
+        System.out.println("******************");
+        System.out.println("1.Do you want to view by Chapter Order (Created)");
+        System.out.println("2.Do you want to view by Chapter Order (Modified)");
+        System.out.println("3.Back to Storyboard Menu");
+        System.out.println("******************");
+        System.out.println("Please enter an option");
+        String option = scanner.nextLine();
+        if (option.length() == 1) {
+            switch (option.charAt(0)) {
+                case '1' -> {
+                    viewChaptersByCreated();
+                }
+                case '2' -> {
+                    viewChaptersByModified();
+                }
+                case '3' -> {
+                    insideStoryboardMenu();
+                }
+            }
+        } else {
+            System.out.println("Please enter a valid option");
+            System.out.println("******************");
+            viewChapters();
+        }
+    }
+
+
+    private void viewChaptersByCreated() {
+        System.out.println("******************");
+        System.out.println("Viewing Chapters by Created Order");
+        System.out.println("******************");
+        try {
+            chapters = archController.viewChaptersByCreated();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            viewChapters();
+        }
+        if (chapters.isEmpty()) {
+            System.out.println("No Chapters found");
+            viewChapters();
+        }
+        for (Map.Entry<Integer, Chapter> entry : chapters.entrySet()) {
+            System.out.println("Chapter ID: " + entry.getKey());
+            System.out.println("Chapter Name: " + entry.getValue().getChapterName());
+            System.out.println("Chapter Creation Date: " + entry.getValue().getCreatedDate());
+            System.out.println("Chapter Creator: " + entry.getValue().getCreator());
+            System.out.println("Version: " + entry.getValue().getVersion());
+            System.out.println("*****************************");
+        }
+        insideStoryboardMenu();
+
+    }
+
+    private void viewChaptersByModified() {
+        System.out.println("******************");
+        System.out.println("Viewing Chapters by Modified Order");
+        System.out.println("******************");
+        try {
+            chapters = archController.viewChaptersByModified();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            viewChapters();
+        }
+        if (chapters.isEmpty()) {
+            System.out.println("No Chapters found");
+            viewChapters();
+        }
+        for (Map.Entry<Integer, Chapter> entry : chapters.entrySet()) {
+            System.out.println("Chapter ID: " + entry.getKey());
+            System.out.println("Chapter Name: " + entry.getValue().getChapterName());
+            System.out.println("Chapter Creation Date: " + entry.getValue().getCreatedDate());
+            System.out.println("Modified Date: " + entry.getValue().getModifiedDate());
+            System.out.println("Modified By: " + entry.getValue().getLastModifiedBy());
+            System.out.println("Chapter Creator: " + entry.getValue().getCreator());
+            System.out.println("Version: " + entry.getValue().getVersion());
+            System.out.println("*****************************");
+        }
+        insideStoryboardMenu();
+
+    }
+
+
 }

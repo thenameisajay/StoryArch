@@ -4,10 +4,7 @@ import main.java.storyArch.api.IllustrationServicesAPI;
 import main.java.storyArch.api.PaymentAPI;
 import main.java.storyArch.api.PublisherAPI;
 import main.java.storyArch.model.*;
-import main.java.storyArch.service.MessageService;
-import main.java.storyArch.service.ProjectService;
-import main.java.storyArch.service.StoryBoardService;
-import main.java.storyArch.service.UserService;
+import main.java.storyArch.service.*;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -37,6 +34,8 @@ public class ArchController implements Serializable {
 
     StoryBoardService storyBoardService = new StoryBoardService();
 
+    ChapterService chapterService = new ChapterService();
+
     public void register(String fullName, String email, String userName, String password, SubscriptionType subscriptionType, Date subscriptionDate) {
         userService.register(fullName, email, userName, password, subscriptionType, subscriptionDate);
     }
@@ -46,6 +45,7 @@ public class ArchController implements Serializable {
         messageService.saveData();
         projectService.saveData();
         storyBoardService.saveData();
+        chapterService.saveData();
     }
 
     public void loadData() throws IOException, ClassNotFoundException {
@@ -53,6 +53,7 @@ public class ArchController implements Serializable {
         messageService.loadData();
         projectService.loadData();
         storyBoardService.loadData();
+        chapterService.loadData();
     }
 
     public void paymentAPI() {
@@ -133,5 +134,30 @@ public class ArchController implements Serializable {
 
     public void checkIfStoryboardExists(String storyboardID) {
         storyBoardService.checkIfStoryboardExists(storyboardID);
+    }
+
+    public Map<Integer, StoryBoard> getStoryboard(String storyboardID) {
+        return storyBoardService.getStoryboard(storyboardID);
+    }
+
+    public void addChapter(String storyboardID, String storyboardName, String chapterName, String chapterDescription, Date createdDate, Date modifiedDate, String creator, String lastModifiedBy) {
+        chapterService.addChapter(storyboardID, storyboardName, chapterName, chapterDescription, createdDate, modifiedDate, creator, lastModifiedBy);
+    }
+
+
+    public Map<Integer, Chapter> viewChaptersByCreated() {
+        return chapterService.viewChaptersByCreated();
+    }
+
+    public Map<Integer, Chapter> viewChaptersByModified() {
+        return chapterService.viewChaptersByModified();
+    }
+
+    public void deleteChapter(String chapterID, String creator) {
+        chapterService.deleteChapter(chapterID, creator);
+    }
+
+    public void editChapter(Integer chapterID, String chapterName, String chapterDescription, String modifiedBy) {
+        chapterService.editChapter(chapterID, chapterName, chapterDescription, modifiedBy);
     }
 }
