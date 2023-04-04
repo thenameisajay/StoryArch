@@ -11,7 +11,12 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
-// Command Line View for Story Arch application
+
+/**
+ * This class is used for the command line interface.
+ * The view of the application.
+ * (MVC)
+ */
 public class CommandLine implements Serializable {
 
     ArchController archController;
@@ -20,7 +25,9 @@ public class CommandLine implements Serializable {
 
     private Scanner scanner;
 
-    // Saving cache data from the service layer.
+    /**
+     * This is the cache data for the view Model that is retrived from the Service Layer via the controller.
+     */
     private Map<String, User> userInfo = new HashMap<>();
     private Map<String, Message> messageCache = new HashMap<>();
 
@@ -38,10 +45,18 @@ public class CommandLine implements Serializable {
     private boolean connectionStatus = false;
 
 
+    /**
+     * Constructor of the class.
+     *
+     * @param archController - The controller of the application.
+     */
     public CommandLine(ArchController archController) {
         this.archController = archController;
     }
 
+    /**
+     * Main method of the class.
+     */
     public void main() {
         System.out.println("Hello User!");
         checkConnection();
@@ -49,6 +64,9 @@ public class CommandLine implements Serializable {
         start();
     }
 
+    /**
+     * Check the state - Internet connection of the local device.
+     */
     private void checkConnection() {
         try {
             InetAddress address = InetAddress.getByName("www.google.com");
@@ -61,6 +79,9 @@ public class CommandLine implements Serializable {
         }
     }
 
+    /**
+     * Start Menu.
+     */
     public void startMessage() {
         System.out.println("Please select an option:");
         System.out.println("1. Login");
@@ -73,6 +94,9 @@ public class CommandLine implements Serializable {
 
     }
 
+    /**
+     * Login Menu - Switch case.
+     */
     public void start() {
         startLogo();
         System.out.println("******************");
@@ -116,6 +140,9 @@ public class CommandLine implements Serializable {
         }
     }
 
+    /**
+     * Save data to the local storage or to the server.
+     */
     private void saveData() {
         System.out.println("Save Data");
         try {
@@ -134,6 +161,9 @@ public class CommandLine implements Serializable {
         }
     }
 
+    /**
+     * Load data from the local storage or from the server.
+     */
     private void loadData() {
         System.out.println("Load Data");
         try {
@@ -152,6 +182,9 @@ public class CommandLine implements Serializable {
         }
     }
 
+    /**
+     * Story Arch Logo.
+     */
     private void startLogo() {
         System.out.println("******************");
         String banner = """
@@ -169,6 +202,9 @@ public class CommandLine implements Serializable {
 
     }
 
+    /**
+     * Register Menu.
+     */
     private void register() {
         System.out.println("***Welcome to the registration page***");
         System.out.println("Please enter your full-name: ");
@@ -257,6 +293,9 @@ public class CommandLine implements Serializable {
         return hashedPassword;
     }
 
+    /**
+     * Login Menu.
+     */
     private void login() {
         System.out.println("******************");
         System.out.println("***Welcome to Story-Arch Login page***");
@@ -346,6 +385,9 @@ public class CommandLine implements Serializable {
         return status;
     }
 
+    /**
+     * Basic Menu or Free Version Menu.
+     */
     private void basicMenu() {
         System.out.println("******************");
         System.out.println("Welcome to the Basic Menu");
@@ -424,6 +466,9 @@ public class CommandLine implements Serializable {
         }
     }
 
+    /**
+     * Free Version user to upgrade to Premium Version.
+     */
     private void upgradeToPremium() {
         System.out.println("******************");
         System.out.println("The Premium subscription costs £ 24.99 per year.");
@@ -465,6 +510,9 @@ public class CommandLine implements Serializable {
 
     }
 
+    /**
+     * Print the information of the messages.
+     */
     private void printInformation() {
         for (Map.Entry<String, Message> entry : messageCache.entrySet()) {
             System.out.println("Message Sender : " + entry.getValue().getFromUser());
@@ -477,6 +525,9 @@ public class CommandLine implements Serializable {
         messageCache.clear();
     }
 
+    /**
+     * Premium Version Menu.
+     */
     private void premiumMenu() {
         System.out.println("******************");
         System.out.println("Welcome to the Premium Menu");
@@ -551,6 +602,9 @@ public class CommandLine implements Serializable {
         }
     }
 
+    /**
+     * Renew the subscription of the Premium Version user.
+     */
     private void renewSubscription() {
         // Premium users can renew their subscription
         System.out.println("******************");
@@ -598,6 +652,9 @@ public class CommandLine implements Serializable {
 
     }
 
+    /**
+     * Send a message to a user.
+     */
     private void sendMessage() {
         System.out.println("******************");
         System.out.println("Send a message to user");
@@ -668,6 +725,9 @@ public class CommandLine implements Serializable {
         }
     }
 
+    /**
+     * To delete the account of the user
+     */
     private void deleteAccount() {
         try {
             String userName = userInfo.entrySet().iterator().next().getKey();
@@ -686,6 +746,9 @@ public class CommandLine implements Serializable {
         }
     }
 
+    /**
+     * Logs out the user
+     */
     private void logout() {
         System.out.println("******************");
         System.out.println("You have been logged out");
@@ -696,6 +759,9 @@ public class CommandLine implements Serializable {
     }
 
 
+    /**
+     * To exit the program
+     */
     public void exit() {
         System.out.println("*************************");
         System.out.println("Thank you for using Story Arch!");
@@ -703,6 +769,9 @@ public class CommandLine implements Serializable {
         System.exit(0);
     }
 
+    /**
+     * Project Menu
+     */
     private void projectMenu() {
 
         System.out.println("******************");
@@ -751,6 +820,9 @@ public class CommandLine implements Serializable {
         }
     }
 
+    /**
+     * Inside the Project Menu
+     */
     private void openProject() {
         System.out.println("******************");
         System.out.println("Open a Project");
@@ -770,6 +842,9 @@ public class CommandLine implements Serializable {
         }
     }
 
+    /**
+     * Delete a Project.
+     */
     private void deleteProject() {
         System.out.println("******************");
         System.out.println("Delete a Project");
@@ -790,6 +865,9 @@ public class CommandLine implements Serializable {
 
     }
 
+    /**
+     * This method is used to create a project
+     */
     private void createProject() {
         List<String> teamMembers = new ArrayList<>();
         System.out.println("******************");
@@ -918,6 +996,9 @@ public class CommandLine implements Serializable {
     }
 
 
+    /**
+     * View all projects created by the user
+     */
     private void viewMyProjects() {
         System.out.println("******************");
         System.out.println("Viewing All Projects");
@@ -963,6 +1044,9 @@ public class CommandLine implements Serializable {
         projectMenu();
     }
 
+    /**
+     * This method is to view inside a project menu.
+     */
     private void insideProjectMenu() {
         String projectName = "";
         System.out.println("******************");
@@ -1012,6 +1096,9 @@ public class CommandLine implements Serializable {
         }
     }
 
+    /**
+     * This method is used for submitting a storyboard to a publisher via API
+     */
     private void submitStoryboardViaAPI() {
         System.out.println("******************");
         System.out.println("Submitting a Storyboard to a Publisher");
@@ -1029,6 +1116,9 @@ public class CommandLine implements Serializable {
         }
     }
 
+    /**
+     * This method is used for opening a storyboard
+     */
     private void openStoryboard() {
         System.out.println("******************");
         System.out.println("Opening a Storyboard");
@@ -1046,6 +1136,9 @@ public class CommandLine implements Serializable {
 
     }
 
+    /**
+     * This method is used to delete a storyboard from a project
+     */
     private void deleteStoryboard() {
         System.out.println("******************");
         System.out.println("Deleting a Storyboard");
@@ -1063,6 +1156,9 @@ public class CommandLine implements Serializable {
         }
     }
 
+    /**
+     * This method is used to add a storyboard to a project
+     */
     private void addStoryboard() {
         String projectID = "";
         String projectName = "";
@@ -1090,6 +1186,9 @@ public class CommandLine implements Serializable {
     }
 
 
+    /**
+     * View all storyboards Menu
+     */
     private void viewStoryboards() {
         System.out.println("******************");
         System.out.println("Viewing Storyboards");
@@ -1117,6 +1216,9 @@ public class CommandLine implements Serializable {
         }
     }
 
+    /**
+     * View all storyboards inside the project
+     */
     private void viewStoryboardsAll() {
         System.out.println("******************");
         System.out.println("Viewing All Storyboards inside the Project");
@@ -1142,6 +1244,9 @@ public class CommandLine implements Serializable {
         insideProjectMenu();
     }
 
+    /**
+     * This method is used to view the project details
+     */
     private void viewProjectDetails() {
         System.out.println("******************");
         System.out.println("Viewing Project Details");
@@ -1160,8 +1265,10 @@ public class CommandLine implements Serializable {
         insideProjectMenu();
     }
 
+    /**
+     * This method is used to display the menu for the Storyboard
+     */
     private void insideStoryboardMenu() {
-        // TODO : ADD CHAPTER , EDIT CHAPTER , DELETE CHAPTER , BACK TO PROJECT MENU
         String storyboardName = "";
         System.out.println("******************");
         for (Map.Entry<Integer, StoryBoard> entry : storyBoard.entrySet()) {
@@ -1204,6 +1311,9 @@ public class CommandLine implements Serializable {
     }
 
 
+    /**
+     * This method is used to add a chapter to the storyboard
+     */
     private void addChapter() {
         System.out.println("******************");
         System.out.println("Adding a Chapter");
@@ -1234,6 +1344,9 @@ public class CommandLine implements Serializable {
     }
 
 
+    /**
+     * Edit Chapter Menu
+     */
     private void editChapter() {
         System.out.println("******************");
         System.out.println("Editing a Chapter");
@@ -1258,6 +1371,9 @@ public class CommandLine implements Serializable {
         }
     }
 
+    /**
+     * Delete chapter method.
+     */
     private void deleteChapter() {
         System.out.println("******************");
         System.out.println("Deleting a Chapter");
@@ -1278,6 +1394,9 @@ public class CommandLine implements Serializable {
         }
     }
 
+    /**
+     * View chapters Menu
+     */
     private void viewChapters() {
         System.out.println("******************");
         System.out.println("Viewing Chapters");
@@ -1308,6 +1427,9 @@ public class CommandLine implements Serializable {
     }
 
 
+    /**
+     * View chapters by created order
+     */
     private void viewChaptersByCreated() {
         System.out.println("******************");
         System.out.println("Viewing Chapters by Created Order");
@@ -1334,6 +1456,9 @@ public class CommandLine implements Serializable {
 
     }
 
+    /**
+     * This method is used to view the chapters by modified order
+     */
     private void viewChaptersByModified() {
         System.out.println("******************");
         System.out.println("Viewing Chapters by Modified Order");

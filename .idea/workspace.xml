@@ -4,18 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Fixed a bug where viewMyMessage by free can be null.">
+    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Added JavaDocs for the Model,Service and Controller Layer.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/api/IllustrationServicesAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/api/IllustrationServicesAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/Chapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Chapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/IllustrationServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/IllustrationServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/SubscriptionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/SubscriptionType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/ChapterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/ChapterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/ProjectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/StoryBoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/StoryBoardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/MainApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +94,7 @@
       <workItem from="1680075675647" duration="10000" />
       <workItem from="1680269095942" duration="95000" />
       <workItem from="1680434975122" duration="59934000" />
-      <workItem from="1680613390380" duration="2756000" />
+      <workItem from="1680613390380" duration="4126000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a simple user menu for the view and updating the data model for the User.">
       <created>1679998692909</created>
@@ -392,7 +383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680614264341</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Added JavaDocs for the Model,Service and Controller Layer.">
+      <created>1680616788691</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1680616788691</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,7 +408,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="redirected the user to paymentAPI for payment purposes when renewing their subscription." />
     <MESSAGE value="free menu is up and running... Free plan users can now access the relevant menu options." />
     <MESSAGE value="Free plan users can now send and receive messages to all users in the system." />
     <MESSAGE value="Added JavaDoc for some of the features." />
@@ -435,29 +432,30 @@
     <MESSAGE value="reformatted code." />
     <MESSAGE value="Updated README.MD" />
     <MESSAGE value="Fixed a bug where viewMyMessage by free can be null." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug where viewMyMessage by free can be null." />
+    <MESSAGE value="Added JavaDocs for the Model,Service and Controller Layer." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added JavaDocs for the Model,Service and Controller Layer." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>209</line>
+          <line>245</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>615</line>
+          <line>672</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>614</line>
+          <line>671</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>814</line>
+          <line>892</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -472,7 +470,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>341</line>
+          <line>380</line>
           <option name="timeStamp" value="98" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
