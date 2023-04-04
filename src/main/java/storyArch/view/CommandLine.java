@@ -385,10 +385,10 @@ public class CommandLine implements Serializable {
                             userName = entry.getKey();
                         }
                         messageCache = archController.viewMessage(userName);
-                        archController.deleteMessage(userName);
                         if (messageCache.isEmpty()) {
                             System.out.println("You have no messages");
                             System.out.println("******************");
+                            archController.deleteMessage(userName);
                             basicMenu();
                         } else {
                             printInformation();
