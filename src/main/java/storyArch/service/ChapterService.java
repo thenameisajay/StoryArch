@@ -5,14 +5,30 @@ import main.java.storyArch.model.Chapter;
 import java.io.*;
 import java.util.*;
 
+/**
+ * This is the service class for the chapter.
+ * All the logic that relates to the chapter is done here.
+ */
 public class ChapterService implements Serializable {
 
     private Map<Integer, Chapter> chapters = new HashMap<>();
 
     private List<Integer> chapterIDS = new ArrayList<>();
 
+    /**
+     * Add a chapter to the system and generate a txt file for it with the version.
+     *
+     * @param storyboardID       - The storyboard ID
+     * @param storyboardName     - The storyboard name
+     * @param chapterName        - The chapter name
+     * @param chapterDescription - The chapter description
+     * @param createdDate        - The date when the chapter was created
+     * @param modifiedDate       - The date when the chapter was last modified
+     * @param creator            - The creator of the chapter
+     * @param lastModifiedBy     - The last person to modify the chapter
+     */
     public void addChapter(String storyboardID, String storyboardName, String chapterName, String chapterDescription, Date createdDate, Date modifiedDate, String creator, String lastModifiedBy) {
-        // Check if chapter Name is empty
+        // Check if the chapter Name is empty
         if (chapterName.isEmpty()) {
             throw new IllegalArgumentException("Chapter Name cannot be empty");
         }
@@ -42,6 +58,11 @@ public class ChapterService implements Serializable {
         }
     }
 
+    /**
+     * Save the chapter data to a file for loading purposes.
+     *
+     * @throws IOException - If the file is not found
+     */
     public void saveData() throws IOException {
         FileOutputStream f = new FileOutputStream("src/resources/chaptersData.ser");
         ObjectOutputStream o = new ObjectOutputStream(f);
@@ -70,6 +91,12 @@ public class ChapterService implements Serializable {
     }
 
 
+    /**
+     * Used to save the chapters to a file - as one of the requirements, is that the chapters can be read and written to by other txt applications.
+     * It is saved in the folder resources/application/
+     *
+     * @throws FileNotFoundException - If the file is not found
+     */
     public void saveToFile() throws FileNotFoundException {
         // Save  chapters hashmap to a file (.txt) for other txt applications to read and write
         try {
@@ -83,6 +110,11 @@ public class ChapterService implements Serializable {
         }
     }
 
+    /**
+     * This method is used to view the chapters for a specific storyboard.
+     *
+     * @return - The chapters sorted by created date
+     */
     public Map<Integer, Chapter> viewChaptersByCreated() {
         if (chapters.isEmpty())
             throw new IllegalArgumentException("No chapters to display");
@@ -97,6 +129,11 @@ public class ChapterService implements Serializable {
         return sortedChapters;
     }
 
+    /**
+     * This method is used to view the chapters for a specific storyboard.
+     *
+     * @return - The chapters sorted by modified date
+     */
     public Map<Integer, Chapter> viewChaptersByModified() {
         if (chapters.isEmpty())
             throw new IllegalArgumentException("No chapters to display");
@@ -112,6 +149,12 @@ public class ChapterService implements Serializable {
     }
 
 
+    /**
+     * This method is used for deleting a chapter and can be only deleted if the user is the creator.
+     *
+     * @param chapterID - The chapter ID
+     * @param creator   - The creator of the chapter
+     */
     public void deleteChapter(String chapterID, String creator) {
         // Check if the chapter exists
         if (!chapters.containsKey(Integer.parseInt(chapterID))) {
@@ -125,6 +168,14 @@ public class ChapterService implements Serializable {
         chapters.remove(Integer.parseInt(chapterID));
     }
 
+    /**
+     * This method is used for editing a chapter , anybody attached to the project can edit the chapter.
+     *
+     * @param chapterID          - The chapter ID
+     * @param chapterName        - The chapter name
+     * @param chapterDescription - The chapter description
+     * @param modifiedBy         - The user who modified the chapter
+     */
     public void editChapter(Integer chapterID, String chapterName, String chapterDescription, String modifiedBy) {
         // Check if chapter ID is empty
         if (chapterID == null) {

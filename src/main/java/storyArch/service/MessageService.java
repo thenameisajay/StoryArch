@@ -5,6 +5,10 @@ import main.java.storyArch.model.Message;
 import java.io.*;
 import java.util.*;
 
+/**
+ * This class is used for storing the messages between users and any system messages.
+ * It is used for the chat feature (inbuilt-message system).
+ */
 public class MessageService implements Serializable {
     ArrayList<Integer> messageIDS = new ArrayList<>();
     private Map<Integer, Message> messages = new HashMap<>();
@@ -41,8 +45,16 @@ public class MessageService implements Serializable {
         }
     }
 
+    /**
+     * This method is used to send a message to a user or a system.
+     *
+     * @param userName    - The username of the user sending the message
+     * @param system      - by default named as the system, but the sender is passed in as a parameter
+     * @param message     - The message being sent
+     * @param presentDate - The date the message is being sent
+     */
     public void sendMessage(String userName, String system, String message, Date presentDate) {
-        // First Check : For empty fields
+        // First Check: For empty fields
         if (userName == null || userName.isEmpty())
             throw new IllegalArgumentException("Username cannot be empty");
         // Add the Message to the Map using a random generated number as the key , store the message in the map with the key.
@@ -57,6 +69,12 @@ public class MessageService implements Serializable {
     }
 
 
+    /**
+     * This method is used to view the messages that the user has received.
+     *
+     * @param userName - The username of the user sending the message
+     * @return - A map of the messages that the user has received
+     */
     public Map<String, Message> viewMessage(String userName) {
         Map<String, Message> returnMessage = new HashMap<>();
         if (messages.size() == 0) {
@@ -72,6 +90,11 @@ public class MessageService implements Serializable {
         return returnMessage;
     }
 
+    /**
+     * Messages are deleted automatically after the user has viewed them (viewMessage method).
+     *
+     * @param userName - The username of the user sending the message
+     */
     public void deleteMessage(String userName) {
         if (userName == null || userName.isEmpty())
             throw new IllegalArgumentException("Username cannot be empty");

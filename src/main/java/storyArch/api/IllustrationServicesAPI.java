@@ -1,5 +1,8 @@
 package main.java.storyArch.api;
 
+/**
+ * This is the API class for the Illustration Services.
+ */
 public class IllustrationServicesAPI {
     public void redirectToIllustrationService() {
         System.out.println("Redirecting to illustration service");

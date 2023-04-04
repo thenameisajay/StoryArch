@@ -5,6 +5,7 @@ import java.util.Date;
 
 /**
  * User class - Data model for the user of the application
+ * This class is used for storing the user information.
  */
 public class User implements Serializable {
     private String fullName;

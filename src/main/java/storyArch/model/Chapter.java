@@ -3,6 +3,10 @@ package main.java.storyArch.model;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * This is used for storing the chapters of the storyboards.
+ * It is used in the storyboard creation.
+ */
 public class Chapter implements Serializable {
 
     private String storyboardID;

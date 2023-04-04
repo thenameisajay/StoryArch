@@ -8,13 +8,20 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class is used for storing the user information.
+ * It is used for the registration and login feature.
+ * It also stores the user data to a file.
+ * It also loads the user data from a file.
+ * It also checks for the validity of the user data.
+ * It also checks for the validity of the user login.
+ */
 public class UserService implements Serializable {
 
     private Map<String, User> user = new HashMap<>();
 
     /**
      * Register a new user to the system
-     *
      * @param fullName         - Full Name of the user
      * @param email            - Email of the user
      * @param userName         - Username of the user
@@ -108,8 +115,13 @@ public class UserService implements Serializable {
 
     }
 
+    /**
+     * Delete a user from the system
+     *
+     * @param userName - Username of the user
+     */
     public void deleteAccount(String userName) {
-        // First Check : If userdata is empty
+        // First Check: If userdata is empty
         if (user.isEmpty()) {
             throw new IllegalArgumentException("No users registered");
         }
@@ -122,8 +134,14 @@ public class UserService implements Serializable {
 
     }
 
+    /**
+     * Update the subscription type of user
+     *
+     * @param userName         - Username of the user
+     * @param subscriptionType - Subscription type of the user
+     */
     public void updateSubscriptionType(String userName, SubscriptionType subscriptionType) {
-        // First Check : If userdata is empty
+        // First Check: If userdata is empty
         if (user.isEmpty()) {
             throw new IllegalArgumentException("No users registered");
         }
@@ -135,14 +153,25 @@ public class UserService implements Serializable {
         }
     }
 
+    /**
+     * Check if the user exists in the system
+     *
+     * @param toUser - Username of the user
+     */
     public void checkIfUserExists(String toUser) {
         if (!user.containsKey(toUser.toLowerCase())) {
             throw new IllegalArgumentException("User does not exist");
         }
     }
 
+    /**
+     * Update the subscription date of user
+     *
+     * @param userName    - Username of the user
+     * @param presentDate - Current date
+     */
     public void updateSubscriptionDate(String userName, Date presentDate) {
-        // First Check : If userdata is empty
+        // First Check: If userdata is empty
         if (user.isEmpty()) {
             throw new IllegalArgumentException("No users registered");
         }

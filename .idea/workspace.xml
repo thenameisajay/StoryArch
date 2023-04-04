@@ -4,10 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Updated README.MD">
+    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Fixed a bug where viewMyMessage by free can be null.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/api/IllustrationServicesAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/api/IllustrationServicesAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/Chapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/Chapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/IllustrationServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/IllustrationServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/SubscriptionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/SubscriptionType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/ChapterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/ChapterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/ProjectService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/StoryBoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/StoryBoardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/application/chapters.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/application/chapters.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +103,7 @@
       <workItem from="1680075675647" duration="10000" />
       <workItem from="1680269095942" duration="95000" />
       <workItem from="1680434975122" duration="59934000" />
-      <workItem from="1680613390380" duration="623000" />
+      <workItem from="1680613390380" duration="2756000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a simple user menu for the view and updating the data model for the User.">
       <created>1679998692909</created>
@@ -376,7 +385,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680564076999</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Fixed a bug where viewMyMessage by free can be null.">
+      <created>1680614264341</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1680614264341</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,7 +410,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Premium Users are now able to renew their subscription from the date." />
     <MESSAGE value="redirected the user to paymentAPI for payment purposes when renewing their subscription." />
     <MESSAGE value="free menu is up and running... Free plan users can now access the relevant menu options." />
     <MESSAGE value="Free plan users can now send and receive messages to all users in the system." />
@@ -419,122 +434,50 @@
     <MESSAGE value="better txt generate format." />
     <MESSAGE value="reformatted code." />
     <MESSAGE value="Updated README.MD" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated README.MD" />
+    <MESSAGE value="Fixed a bug where viewMyMessage by free can be null." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug where viewMyMessage by free can be null." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>210</line>
+          <line>209</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>616</line>
+          <line>615</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>615</line>
+          <line>614</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>815</line>
+          <line>814</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="65" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
-          <line>49</line>
-          <option name="timeStamp" value="66" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="67" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
-          <line>60</line>
-          <option name="timeStamp" value="69" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
-          <line>68</line>
-          <option name="timeStamp" value="70" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>416</line>
-          <option name="timeStamp" value="75" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>410</line>
-          <option name="timeStamp" value="76" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>411</line>
-          <option name="timeStamp" value="77" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>412</line>
-          <option name="timeStamp" value="78" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/ChapterService.java</url>
-          <line>147</line>
+          <line>198</line>
           <option name="timeStamp" value="92" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/ChapterService.java</url>
-          <line>74</line>
+          <line>101</line>
           <option name="timeStamp" value="97" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java</url>
-          <line>342</line>
+          <line>341</line>
           <option name="timeStamp" value="98" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
-          <line>43</line>
-          <properties class="main.java.storyArch.service.MessageService" method="sendMessage">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
-          <line>59</line>
-          <properties class="main.java.storyArch.service.MessageService" method="viewMessage">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="68" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java</url>
-          <line>74</line>
+          <line>97</line>
           <properties class="main.java.storyArch.service.MessageService" method="deleteMessage">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -543,7 +486,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/ChapterService.java</url>
-          <line>127</line>
+          <line>178</line>
           <properties class="main.java.storyArch.service.ChapterService" method="editChapter">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

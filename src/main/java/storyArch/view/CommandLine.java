@@ -57,7 +57,6 @@ public class CommandLine implements Serializable {
             connectionStatus = true;
         } catch (UnknownHostException e) {
             System.out.println("You are Offline, all data will be saved locally on your device until you are online.");
-            System.out.println("Connection Status: false");
             connectionStatus = false;
         }
     }
