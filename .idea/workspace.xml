@@ -4,18 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Added test-cases for the model layer.">
-      <change afterPath="$PROJECT_DIR$/src/tests/servicetests/MessageServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/servicetests/ProjectServiceTest.java" afterDir="false" />
+    <list default="true" id="c2424951-4442-4dcc-bc2d-2443feb8bd1b" name="Changes" comment="Fixed bugs found when testing the code.">
+      <change afterPath="$PROJECT_DIR$/src/tests/servicetests/StoryBoardServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/servicetests/UserServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/controller/ArchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/MessageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/view/CommandLine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storyArch/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storyArch/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/application/chapters.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/application/chapters.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/chaptersData.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/chaptersData.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/messageData.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/messageData.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/projectData.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/projectData.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/servicetests/ChapterServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/servicetests/ChapterServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/storyBoardData.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/storyBoardData.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/userData.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/servicetests/MessageServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/servicetests/MessageServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/servicetests/ProjectServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/servicetests/ProjectServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,13 +81,13 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="tests.servicetests" />
       <recent name="main.java.storyArch.service" />
+      <recent name="tests.servicetests" />
       <recent name="tests" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ProjectServiceTest.testGetSharedProjects">
-    <configuration name="MessageServiceTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.tests in StoryArch">
+    <configuration name="ProjectServiceTest.testCreateProject" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="StoryArch" />
       <extension name="coverage">
         <pattern>
@@ -95,13 +96,29 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests.servicetests" />
-      <option name="MAIN_CLASS_NAME" value="tests.servicetests.MessageServiceTest" />
+      <option name="MAIN_CLASS_NAME" value="tests.servicetests.ProjectServiceTest" />
+      <option name="METHOD_NAME" value="testCreateProject" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StoryBoardServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="StoryArch" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.servicetests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests.servicetests" />
+      <option name="MAIN_CLASS_NAME" value="tests.servicetests.StoryBoardServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProjectServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="StoryBoardServiceTest.testViewStoryboardsByDate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="StoryArch" />
       <extension name="coverage">
         <pattern>
@@ -110,67 +127,49 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests.servicetests" />
-      <option name="MAIN_CLASS_NAME" value="tests.servicetests.ProjectServiceTest" />
+      <option name="MAIN_CLASS_NAME" value="tests.servicetests.StoryBoardServiceTest" />
+      <option name="METHOD_NAME" value="testViewStoryboardsByDate" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="StoryArch" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.servicetests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests.servicetests" />
+      <option name="MAIN_CLASS_NAME" value="tests.servicetests.UserServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProjectServiceTest.testGetProjectByCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="tests in StoryArch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="StoryArch" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tests.servicetests.*" />
+          <option name="PATTERN" value="tests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="tests.servicetests" />
-      <option name="MAIN_CLASS_NAME" value="tests.servicetests.ProjectServiceTest" />
-      <option name="METHOD_NAME" value="testGetProjectByCreator" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProjectServiceTest.testGetSharedProjects" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="StoryArch" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.servicetests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests.servicetests" />
-      <option name="MAIN_CLASS_NAME" value="tests.servicetests.ProjectServiceTest" />
-      <option name="METHOD_NAME" value="testGetSharedProjects" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProjectServiceTest.testSaveAndLoadData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="StoryArch" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.servicetests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests.servicetests" />
-      <option name="MAIN_CLASS_NAME" value="tests.servicetests.ProjectServiceTest" />
-      <option name="METHOD_NAME" value="testSaveAndLoadData" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProjectServiceTest.testGetSharedProjects" />
-        <item itemvalue="JUnit.ProjectServiceTest.testGetProjectByCreator" />
-        <item itemvalue="JUnit.ProjectServiceTest.testSaveAndLoadData" />
-        <item itemvalue="JUnit.ProjectServiceTest" />
-        <item itemvalue="JUnit.MessageServiceTest (1)" />
+        <item itemvalue="JUnit.tests in StoryArch" />
+        <item itemvalue="JUnit.ProjectServiceTest.testCreateProject" />
+        <item itemvalue="JUnit.UserServiceTest" />
+        <item itemvalue="JUnit.StoryBoardServiceTest" />
+        <item itemvalue="JUnit.StoryBoardServiceTest.testViewStoryboardsByDate" />
       </list>
     </recent_temporary>
   </component>
@@ -191,7 +190,7 @@
       <workItem from="1680434975122" duration="59934000" />
       <workItem from="1680613390380" duration="4147000" />
       <workItem from="1680628871456" duration="674000" />
-      <workItem from="1680652677345" duration="3084000" />
+      <workItem from="1680652677345" duration="4825000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a simple user menu for the view and updating the data model for the User.">
       <created>1679998692909</created>
@@ -501,7 +500,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680653884122</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Fixed bugs found when testing the code.">
+      <created>1680655954916</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1680655954916</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -519,7 +525,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added JavaDoc for some of the features." />
     <MESSAGE value="now Free users can upgrade to premium." />
     <MESSAGE value="now added publisher options to the API" />
     <MESSAGE value="The application now detects if the local machine online or offline." />
@@ -544,7 +549,8 @@
     <MESSAGE value="Added JavaDocs for the Model,Service and Controller Layer." />
     <MESSAGE value="Added JavaDocs for the View Layer and MainClass." />
     <MESSAGE value="Added test-cases for the model layer." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added test-cases for the model layer." />
+    <MESSAGE value="Fixed bugs found when testing the code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bugs found when testing the code." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -596,8 +602,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/tests/servicetests/MessageServiceTest.java</url>
-          <line>47</line>
+          <line>48</line>
           <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/tests/servicetests/ProjectServiceTest.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="103" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/storyArch/service/ChapterService.java</url>

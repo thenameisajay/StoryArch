@@ -39,6 +39,7 @@ class MessageServiceTest {
         Map<Integer, Message> receivedMessages = messageService.viewMessage(userName);
         assertEquals(1, receivedMessages.size());
 
+
     }
 
     @Test

@@ -182,4 +182,21 @@ public class UserService implements Serializable {
             throw new IllegalArgumentException("Username does not exist");
         }
     }
+
+    /**
+     * For testing purposes.
+     *
+     * @return - Returns the user data
+     */
+    public Map<String, User> viewUsers() {
+        return user;
+    }
+
+    /**
+     * For testing purposes.
+     * Wipes all the user data.
+     */
+    public void wipeAll() {
+        user.clear();
+    }
 }

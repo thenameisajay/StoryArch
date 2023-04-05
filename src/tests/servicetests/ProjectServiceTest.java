@@ -40,7 +40,7 @@ class ProjectServiceTest {
         projectService.createProject("Project 2", "Description", "creator2", new Date(), IllustrationServices.YES, null);
 
         assertThrows(IllegalArgumentException.class, () ->
-                projectService.createProject("Project 1", "Description", "creator3", new Date(), IllustrationServices.YES, null));
+                projectService.createProject("Project 1", "Description", "creator1", new Date(), IllustrationServices.YES, null));
 
         assertThrows(IllegalArgumentException.class, () ->
                 projectService.createProject("Project 3", "Description", "creator2", new Date(), IllustrationServices.YES, List.of("creator2")));
