@@ -26,6 +26,7 @@ To develop a non-web-based software application in Java to support individual an
 * Java 17
 * Intelli - J Ultimate
 * Git
+* JUnit 5
 
 
 ---
@@ -73,6 +74,15 @@ To develop a non-web-based software application in Java to support individual an
 
 ---
 
+### No of Test Cases: 93
+
+Classes Tested:
+<ol>
+           <li> Model Layer: 5 </li>
+            <li> Service Layer: 5 </li>
+</ol>
+
+```
 
 
 ### CONTRIBUTION GUIDELINES :
