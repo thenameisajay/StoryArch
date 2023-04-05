@@ -76,7 +76,7 @@ public class ArchController implements Serializable {
         messageService.sendMessage(userName, system, message, presentDate);
     }
 
-    public Map<String, Message> viewMessage(String userName) {
+    public Map<Integer, Message> viewMessage(String userName) {
         return messageService.viewMessage(userName);
     }
 

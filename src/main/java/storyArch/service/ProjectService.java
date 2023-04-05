@@ -52,7 +52,7 @@ public class ProjectService implements Serializable {
         }
         // Check if the project name already exists in the database.
         for (Project project : projects.values()) {
-            if (project.getProjectName().equals(projectName.toLowerCase()) || project.getCreator().equals(creator.toLowerCase())) {
+            if (project.getProjectName().equals(projectName.toLowerCase()) && project.getCreator().equals(creator.toLowerCase())) {
                 throw new IllegalArgumentException("Project name already exists ! Create a new project name.");
             }
         }

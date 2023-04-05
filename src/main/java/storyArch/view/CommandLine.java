@@ -29,7 +29,7 @@ public class CommandLine implements Serializable {
      * This is the cache data for the view Model that is retrived from the Service Layer via the controller.
      */
     private Map<String, User> userInfo = new HashMap<>();
-    private Map<String, Message> messageCache = new HashMap<>();
+    private Map<Integer, Message> messageCache = new HashMap<>();
 
     private Map<Integer, Project> projects = new HashMap<>();
 
@@ -514,7 +514,7 @@ public class CommandLine implements Serializable {
      * Print the information of the messages.
      */
     private void printInformation() {
-        for (Map.Entry<String, Message> entry : messageCache.entrySet()) {
+        for (Map.Entry<Integer, Message> entry : messageCache.entrySet()) {
             System.out.println("Message Sender : " + entry.getValue().getFromUser());
             System.out.println("Message Date : " + entry.getValue().getTimeStamp());
             System.out.println("Message : " + entry.getValue().getMessage());

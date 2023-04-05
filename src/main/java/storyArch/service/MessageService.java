@@ -75,8 +75,8 @@ public class MessageService implements Serializable {
      * @param userName - The username of the user sending the message
      * @return - A map of the messages that the user has received
      */
-    public Map<String, Message> viewMessage(String userName) {
-        Map<String, Message> returnMessage = new HashMap<>();
+    public Map<Integer, Message> viewMessage(String userName) {
+        Map<Integer, Message> returnMessage = new HashMap<>();
         if (messages.size() == 0) {
             throw new IllegalArgumentException("No messages to display");
         }
@@ -84,7 +84,7 @@ public class MessageService implements Serializable {
             throw new IllegalArgumentException("Username cannot be empty");
         for (Map.Entry<Integer, Message> entry : messages.entrySet()) {
             if (entry.getValue().getToUser().equals(userName.toLowerCase())) {
-                returnMessage.put(entry.getKey().toString(), entry.getValue());
+                returnMessage.put(Integer.valueOf(entry.getKey().toString()), entry.getValue());
             }
         }
         return returnMessage;
@@ -98,10 +98,7 @@ public class MessageService implements Serializable {
     public void deleteMessage(String userName) {
         if (userName == null || userName.isEmpty())
             throw new IllegalArgumentException("Username cannot be empty");
-        for (Map.Entry<Integer, Message> entry : messages.entrySet()) {
-            if (entry.getValue().getToUser().equals(userName.toLowerCase())) {
-                messages.remove(entry.getKey());
-            }
-        }
+        messages.entrySet().removeIf(entry -> entry.getValue().getToUser().equals(userName.toLowerCase()));
     }
+
 }
