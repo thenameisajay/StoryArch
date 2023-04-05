@@ -45,6 +45,7 @@ To develop a non-web-based software application in Java to support individual an
 <ol>
 <li> Compile all files using javac *.java</li>
 <li> Run the MainApp.java file using java MainApp</li>
+<li> To access the Projects, Storyboard or chapter -> a random ID is assigned, this can be viewed using (the View option).</li>
 <br/>
 </ol>
 
