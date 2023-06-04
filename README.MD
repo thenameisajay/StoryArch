@@ -1,28 +1,14 @@
-# CS5033 - Software Architecture - P2
-
-## NAME
-
-**  Plot development Application for writers **
+# StoryArch -  Plot development Application for writers
 --
 
 ## DESCRIPTION
 
 <p> 
-To develop a non-web-based software application in Java to support individual and collaborative plot development for stories. The application is expected to be deployed on laptops and desktops.
+StoryArch is a creative tool aimed at helping writers build their narratives more efficiently. It streamlines the process of structuring a story, enabling users to outline their plots, build characters, and track story progress effortlessly.
+The idea was too develop a non-web-based software application in Java to support individual and collaborative plot development for stories. The application is expected to be deployed on laptops and desktops.
 </p>
 
-## Authors and acknowledgement
 
-### Team Members :
-
-         1) 220031985
-         2) 190015715
-         3) 190020857
-         4) 190018240
-
-
-
---- 
 
 ### Technologies Used
 
@@ -30,7 +16,6 @@ To develop a non-web-based software application in Java to support individual an
 * Intelli - J Ultimate
 * Git
 * JUnit 5
-
 
 ---
 
