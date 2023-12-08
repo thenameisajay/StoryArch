@@ -5,7 +5,7 @@
 
 <p> 
 StoryArch is a creative tool aimed at helping writers build their narratives more efficiently. It streamlines the process of structuring a story, enabling users to outline their plots, build characters, and track story progress effortlessly.
-The idea was too develop a non-web-based software application in Java to support individual and collaborative plot development for stories. The application is expected to be deployed on laptops and desktops.
+The idea was to develop a non-web-based software application in Java to support individual and collaborative plot development for stories. The application is expected to be deployed on laptops and desktops.
 </p>
 
 
